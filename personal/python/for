@@ -1,0 +1,70 @@
+[38;5;248;03m#  The current answers are good, but do not talk about how they are just[39;00m
+[38;5;248;03m#  [syntactic sugar][1] to some pattern that we are so used to.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  Let's start with an example, say we have 10 numbers, and we want a[39;00m
+[38;5;248;03m#  subset of those that are greater than, say, 5.[39;00m
+
+[38;5;252m [39m[38;5;252m>>[39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;252m[[39m[38;5;75m12[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m34[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m1[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m4[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m4[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m67[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m37[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m9[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m0[39m[38;5;252m,[39m[38;5;252m [39m[38;5;75m81[39m[38;5;252m][39m
+
+[38;5;248;03m#  For the above task, the below approaches below are totally identical[39;00m
+[38;5;248;03m#  to one another, and go from most verbose to concise, readable and[39;00m
+[38;5;248;03m#  ***pythonic***:[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  ##Approach 1[39;00m
+
+[38;5;252m [39m[38;5;252mresult[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m][39m
+[38;5;252m [39m[38;5;70;01mfor[39;00m[38;5;252m [39m[38;5;252mindex[39m[38;5;252m [39m[38;5;70;01min[39;00m[38;5;252m [39m[38;5;38mrange[39m[38;5;252m([39m[38;5;38mlen[39m[38;5;252m([39m[38;5;252mnumbers[39m[38;5;252m)[39m[38;5;252m)[39m[38;5;252m:[39m
+[38;5;252m     [39m[38;5;70;01mif[39;00m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m[[39m[38;5;252mindex[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;75m5[39m[38;5;252m:[39m
+[38;5;252m         [39m[38;5;252mresult[39m[38;5;252m.[39m[38;5;252mappend[39m[38;5;252m([39m[38;5;252mnumbers[39m[38;5;252m[[39m[38;5;252mindex[39m[38;5;252m][39m[38;5;252m)[39m
+[38;5;252m [39m[38;5;38mprint[39m[38;5;252m [39m[38;5;252mresult[39m[38;5;252m  [39m[38;5;248;03m#Prints [12, 34, 67, 37, 9, 81][39;00m
+
+[38;5;248;03m#  ##Approach 2 (Slightly cleaner, for-in loops)[39;00m
+
+[38;5;252m [39m[38;5;252mresult[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m][39m
+[38;5;252m [39m[38;5;70;01mfor[39;00m[38;5;252m [39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;70;01min[39;00m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m:[39m
+[38;5;252m     [39m[38;5;70;01mif[39;00m[38;5;252m [39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;75m5[39m[38;5;252m:[39m
+[38;5;252m         [39m[38;5;252mresult[39m[38;5;252m.[39m[38;5;252mappend[39m[38;5;252m([39m[38;5;252mnumber[39m[38;5;252m)[39m
+[38;5;252m [39m[38;5;38mprint[39m[38;5;252m [39m[38;5;252mresult[39m[38;5;252m  [39m[38;5;248;03m#Prints [12, 34, 67, 37, 9, 81][39;00m
+
+[38;5;248;03m#  ##Approach 3 (Enter List Comprehension)[39;00m
+
+[38;5;252m [39m[38;5;252mresult[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;70;01mfor[39;00m[38;5;252m [39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;70;01min[39;00m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m [39m[38;5;70;01mif[39;00m[38;5;252m [39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;75m5[39m[38;5;252m][39m
+
+[38;5;248;03m#  ##or more generally:[39;00m
+
+[38;5;252m [39m[38;5;252m[[39m[38;5;252mfunction[39m[38;5;252m([39m[38;5;252mnumber[39m[38;5;252m)[39m[38;5;252m [39m[38;5;70;01mfor[39;00m[38;5;252m [39m[38;5;252mnumber[39m[38;5;252m [39m[38;5;70;01min[39;00m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m [39m[38;5;70;01mif[39;00m[38;5;252m [39m[38;5;252mcondition[39m[38;5;252m([39m[38;5;252mnumber[39m[38;5;252m)[39m[38;5;252m][39m
+
+[38;5;248;03m#  where:[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;252m [39m[38;5;248;03m#  - `function(x)` takes an `x` and transforms it into something useful[39;00m
+[38;5;248;03m#  (like for instance: `x*x`)[39;00m
+[38;5;252m [39m[38;5;248;03m#  - if `condition(x)` returns any False-y value (False, None, empty[39;00m
+[38;5;248;03m#  string, empty list, etc ..) then the current iteration will be skipped[39;00m
+[38;5;248;03m#  (think `continue`). If the function return a non-False-y value then[39;00m
+[38;5;248;03m#  the current value makes it to the final resultant array (and goes[39;00m
+[38;5;248;03m#  through the transformation step above).[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  To understand the syntax in a slightly different manner, look at the[39;00m
+[38;5;248;03m#  Bonus section below.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  For further information, follow the tutorial all other answers have[39;00m
+[38;5;248;03m#  linked: [List Comprehension][2][39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  ---[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  ##Bonus[39;00m
+[38;5;248;03m#  (Slightly un-pythonic, but putting it here for sake of completeness)[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  The example above can be written as:[39;00m
+
+[38;5;252m [39m[38;5;252mresult[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;38mfilter[39m[38;5;252m([39m[38;5;70;01mlambda[39;00m[38;5;252m [39m[38;5;252mx[39m[38;5;252m:[39m[38;5;252m [39m[38;5;252mx[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;75m5[39m[38;5;252m,[39m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m)[39m
+
+[38;5;248;03m#  The general expression above can be written as:[39;00m
+
+[38;5;252m [39m[38;5;252mresult[39m[38;5;252m [39m[38;5;252m=[39m[38;5;252m [39m[38;5;38mmap[39m[38;5;252m([39m[38;5;252mfunction[39m[38;5;252m,[39m[38;5;252m [39m[38;5;38mfilter[39m[38;5;252m([39m[38;5;252mcondition[39m[38;5;252m,[39m[38;5;252m [39m[38;5;252mnumbers[39m[38;5;252m)[39m[38;5;252m)[39m[38;5;252m [39m[38;5;248;03m#result is a list in Py2[39;00m
+
+[38;5;252m  [39m[38;5;248;03m#  [1]: https://en.wikipedia.org/wiki/Syntactic_sugar[39;00m
+[38;5;252m  [39m[38;5;248;03m#  [2]: http://docs.python.org/tutorial/datastructures.htmllist-[39;00m
+[38;5;248;03m#  comprehensions[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  [UltraInstinct] [so/q/6475314] [cc by-sa 3.0][39;00m

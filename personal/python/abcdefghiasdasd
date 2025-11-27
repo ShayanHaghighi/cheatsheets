@@ -1,0 +1,17 @@
+[38;5;248;03m#  404 NOT FOUND[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  Unknown cheat sheet. Please try to reformulate your query.[39;00m
+[38;5;248;03m#  Query format:[39;00m
+
+[38;5;252m [39m[38;5;252m/[39m[38;5;252mLANG[39m[38;5;252m/[39m[38;5;252mQUESTION[39m
+
+[38;5;248;03m#  Examples:[39;00m
+
+[38;5;252m [39m[38;5;252m/[39m[38;5;252mpython[39m[38;5;252m/[39m[38;5;252mread[39m[38;5;252m+[39m[38;5;252mjson[39m
+[38;5;252m [39m[38;5;252m/[39m[38;5;252mgolang[39m[38;5;252m/[39m[38;5;252mrun[39m[38;5;252m+[39m[38;5;252mexternal[39m[38;5;252m+[39m[38;5;252mprogram[39m
+[38;5;252m [39m[38;5;252m/[39m[38;5;252mjs[39m[38;5;252m/[39m[38;5;252mregex[39m[38;5;252m+[39m[38;5;252msearch[39m
+
+[38;5;248;03m#  See /:help for more info.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  If the problem persists, file a GitHub issue at[39;00m
+[38;5;248;03m#  github.com/chubin/cheat.sh or ping @igor_chubin[39;00m

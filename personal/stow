@@ -1,0 +1,19 @@
+[38;5;248;03m# stow[39;00m
+[38;5;248;03m# Symlink manager.[39;00m
+[38;5;248;03m# Often used to manage dotfiles.[39;00m
+[38;5;248;03m# More information: <https://www.gnu.org/software/stow>.[39;00m
+
+[38;5;248;03m# Symlink all files recursively to a given directory:[39;00m
+[38;5;252mstow[39m[38;5;241m [39m[38;5;252m--target[39m[38;5;252m=[39m[38;5;252mpath/to/target_directory[39m[38;5;241m [39m[38;5;252mfile1[39m[38;5;241m [39m[38;5;252mdirectory1[39m[38;5;241m [39m[38;5;252mfile2[39m[38;5;241m [39m[38;5;252mdirectory2[39m
+
+[38;5;248;03m# Delete symlinks recursively from a given directory:[39;00m
+[38;5;252mstow[39m[38;5;241m [39m[38;5;252m--delete[39m[38;5;241m [39m[38;5;252m--target[39m[38;5;252m=[39m[38;5;252mpath/to/target_directory[39m[38;5;241m [39m[38;5;252mfile1[39m[38;5;241m [39m[38;5;252mdirectory1[39m[38;5;241m [39m[38;5;252mfile2[39m[38;5;241m [39m[38;5;252mdirectory2[39m
+
+[38;5;248;03m# Simulate to see what the result would be like:[39;00m
+[38;5;252mstow[39m[38;5;241m [39m[38;5;252m--simulate[39m[38;5;241m [39m[38;5;252m--target[39m[38;5;252m=[39m[38;5;252mpath/to/target_directory[39m[38;5;241m [39m[38;5;252mfile1[39m[38;5;241m [39m[38;5;252mdirectory1[39m[38;5;241m [39m[38;5;252mfile2[39m[38;5;241m [39m[38;5;252mdirectory2[39m
+
+[38;5;248;03m# Delete and resymlink:[39;00m
+[38;5;252mstow[39m[38;5;241m [39m[38;5;252m--restow[39m[38;5;241m [39m[38;5;252m--target[39m[38;5;252m=[39m[38;5;252mpath/to/target_directory[39m[38;5;241m [39m[38;5;252mfile1[39m[38;5;241m [39m[38;5;252mdirectory1[39m[38;5;241m [39m[38;5;252mfile2[39m[38;5;241m [39m[38;5;252mdirectory2[39m
+
+[38;5;248;03m# Exclude files matching a regular expression:[39;00m
+[38;5;252mstow[39m[38;5;241m [39m[38;5;252m--ignore[39m[38;5;252m=[39m[38;5;252mregular_expression[39m[38;5;241m [39m[38;5;252m--target[39m[38;5;252m=[39m[38;5;252mpath/to/target_directory[39m[38;5;241m [39m[38;5;252mfile1[39m[38;5;241m [39m[38;5;252mdirectory1[39m[38;5;241m [39m[38;5;252mfile2[39m[38;5;241m [39m[38;5;252mdirectory2[39m

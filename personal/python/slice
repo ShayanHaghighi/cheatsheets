@@ -1,0 +1,61 @@
+[38;5;248;03m#  It's pretty simple really:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252mstart[39m[38;5;252m:[39m[38;5;252mstop[39m[38;5;252m][39m[38;5;252m  [39m[38;5;248;03m# items start through stop-1[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252mstart[39m[38;5;252m:[39m[38;5;252m][39m[38;5;252m      [39m[38;5;248;03m# items start through the rest of the array[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m:[39m[38;5;252mstop[39m[38;5;252m][39m[38;5;252m       [39m[38;5;248;03m# items from the beginning through stop-1[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m:[39m[38;5;252m][39m[38;5;252m           [39m[38;5;248;03m# a copy of the whole array[39;00m
+
+[38;5;248;03m#  There is also the `step` value, which can be used with any of the[39;00m
+[38;5;248;03m#  above:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252mstart[39m[38;5;252m:[39m[38;5;252mstop[39m[38;5;252m:[39m[38;5;252mstep[39m[38;5;252m][39m[38;5;252m [39m[38;5;248;03m# start through not past stop, by step[39;00m
+
+[38;5;248;03m#  The key point to remember is that the `:stop` value represents the[39;00m
+[38;5;248;03m#  first value that is *not* in the selected slice. So, the difference[39;00m
+[38;5;248;03m#  between `stop` and `start` is the number of elements selected (if[39;00m
+[38;5;248;03m#  `step` is 1, the default).[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  The other feature is that `start` or `stop` may be a *negative*[39;00m
+[38;5;248;03m#  number, which means it counts from the end of the array instead of the[39;00m
+[38;5;248;03m#  beginning. So:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m-[39m[38;5;75m1[39m[38;5;252m][39m[38;5;252m    [39m[38;5;248;03m# last item in the array[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m-[39m[38;5;75m2[39m[38;5;252m:[39m[38;5;252m][39m[38;5;252m   [39m[38;5;248;03m# last two items in the array[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m2[39m[38;5;252m][39m[38;5;252m   [39m[38;5;248;03m# everything except the last two items[39;00m
+
+[38;5;248;03m#  Similarly, `step` may be a negative number:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m:[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m1[39m[38;5;252m][39m[38;5;252m    [39m[38;5;248;03m# all items in the array, reversed[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;75m1[39m[38;5;252m:[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m1[39m[38;5;252m][39m[38;5;252m   [39m[38;5;248;03m# the first two items, reversed[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m3[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m1[39m[38;5;252m][39m[38;5;252m  [39m[38;5;248;03m# the last two items, reversed[39;00m
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252m-[39m[38;5;75m3[39m[38;5;252m:[39m[38;5;252m:[39m[38;5;252m-[39m[38;5;75m1[39m[38;5;252m][39m[38;5;252m  [39m[38;5;248;03m# everything except the last two items, reversed[39;00m
+
+[38;5;248;03m#  Python is kind to the programmer if there are fewer items than you ask[39;00m
+[38;5;248;03m#  for. For example, if you ask for `a[:-2]` and `a` only contains one[39;00m
+[38;5;248;03m#  element, you get an empty list instead of an error. Sometimes you[39;00m
+[38;5;248;03m#  would prefer the error, so you have to be aware that this may happen.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  ## Relation to `slice()` object[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  The slicing operator `[]` is actually being used in the above code[39;00m
+[38;5;248;03m#  with a `slice()` object using the `:` notation (which is only valid[39;00m
+[38;5;248;03m#  within `[]`), i.e.:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;252mstart[39m[38;5;252m:[39m[38;5;252mstop[39m[38;5;252m:[39m[38;5;252mstep[39m[38;5;252m][39m
+
+[38;5;248;03m#  is equivalent to:[39;00m
+
+[38;5;252m [39m[38;5;252ma[39m[38;5;252m[[39m[38;5;38mslice[39m[38;5;252m([39m[38;5;252mstart[39m[38;5;252m,[39m[38;5;252m [39m[38;5;252mstop[39m[38;5;252m,[39m[38;5;252m [39m[38;5;252mstep[39m[38;5;252m)[39m[38;5;252m][39m
+
+[38;5;248;03m#  Slice objects also behave slightly differently depending on the number[39;00m
+[38;5;248;03m#  of arguments, similarly to `range()`, i.e. both `slice(stop)` and[39;00m
+[38;5;248;03m#  `slice(start, stop[, step])` are supported.[39;00m
+[38;5;248;03m#  To skip specifying a given argument, one might use `None`, so that[39;00m
+[38;5;248;03m#  e.g. `a[start:]` is equivalent to `a[slice(start, None)]` or `a[::-1]`[39;00m
+[38;5;248;03m#  is equivalent to `a[slice(None, None, -1)]`.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  While the `:`-based notation is very helpful for simple slicing, the[39;00m
+[38;5;248;03m#  explicit use of `slice()` objects simplifies the programmatic[39;00m
+[38;5;248;03m#  generation of slicing.[39;00m
+[38;5;248;03m#  [39;00m
+[38;5;248;03m#  [Greg Hewgill] [so/q/509211] [cc by-sa 3.0][39;00m

@@ -1,0 +1,189 @@
+[48;5;8m[24m cheat.sheets:awk [24m[0m
+[38;5;248;03m# awk[39;00m
+[38;5;248;03m# Pattern scanning and processing language[39;00m
+
+[38;5;248;03m# Sum integers from a file or STDIN, one integer per line.[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1\n2\n3\n'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{sum += $1} END {print sum}'[39m
+
+[38;5;248;03m# Using specific character as separator to sum integers from a file or STDIN.[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1:2:3'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-F[39m[38;5;241m [39m[38;5;214m":"[39m[38;5;241m [39m[38;5;214m'{print $1+$2+$3}'[39m
+
+[38;5;248;03m# Print line number 12 of file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'NR==12'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print first field for each record in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{print $1}'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;252mPrint[39m[38;5;241m [39m[38;5;252monly[39m[38;5;241m [39m[38;5;252mlines[39m[38;5;241m [39m[38;5;252mthat[39m[38;5;241m [39m[38;5;252mmatch[39m[38;5;241m [39m[38;5;252mregex[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252mfile.txt[39m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print only lines that do not match regex in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'!/regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print any line where field 2 is equal to "foo" in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$2 == "foo"'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print lines where field 2 is NOT equal to "foo" in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$2 != "foo"'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print line if field 1 matches regex in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$1 ~ /regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print line if field 1 does NOT match regex in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$1 !~ /regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print lines with more than 80 characters in file.txt[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'length > 80'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Print a multiplication table.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-v[39m[38;5;241m [39m[38;5;87mRS[39m[38;5;252m=[39m[38;5;214m''[39m[38;5;241m [39m[38;5;214m'[39m
+[38;5;214m    {[39m
+[38;5;214m        for(i=1;i<=NF;i++){[39m
+[38;5;214m            printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")[39m
+[38;5;214m        }[39m
+[38;5;214m    }[39m
+[38;5;214m'[39m[38;5;241m [39m[38;5;252m<<<[39m[38;5;241m [39m[38;5;214m"[39m[38;5;70;01m$([39;00m[38;5;252mseq[39m[38;5;241m [39m[38;5;75m9[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252msed[39m[38;5;241m [39m[38;5;214m'H;g'[39m[38;5;70;01m)[39;00m[38;5;214m"[39m
+
+[38;5;248;03m# Specify output separator character.[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1 2 3'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'BEGIN {OFS=":"}; {print $1,$2,$3}'[39m
+
+[38;5;248;03m# Search paragraph for the given REGEX match.[39;00m
+[38;5;248;03m# Paragraphs will be collapsed together.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-v[39m[38;5;241m [39m[38;5;87mRS[39m[38;5;252m=[39m[38;5;214m''[39m[38;5;241m [39m[38;5;214m'/42B/'[39m[38;5;241m [39m[38;5;252mfile[39m
+
+[38;5;248;03m# Search paragraph for the given REGEX match.[39;00m
+[38;5;248;03m# Paragraphs will be separated with a new line.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-v[39m[38;5;241m [39m[38;5;87mRS[39m[38;5;252m=[39m[38;5;241m [39m[38;5;87mORS[39m[38;5;252m=[39m[38;5;214m'\n\n'[39m[38;5;241m [39m[38;5;214m'/42B/'[39m[38;5;241m [39m[38;5;252mfile[39m
+
+[38;5;248;03m# Display only first field in text taken from STDIN.[39;00m
+[38;5;38mecho[39m[38;5;241m [39m[38;5;214m'Field_1  Field_2  Field_3'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{print $1}'[39m
+[38;5;248;03m# Note that in this case, you're far better off using cut(1).[39;00m
+
+[38;5;248;03m# Use AWK solo; without the need for something via STDIN.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'BEGIN {print("Example text.")}'[39m
+
+[38;5;248;03m# Access environment variables from within AWK.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'BEGIN {print ENVIRON["LS_COLORS"]}'[39m
+
+[38;5;248;03m# Count number of lines taken from STDIN.[39;00m
+[38;5;252mfree[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{L++} END {print(L)}'[39m
+[38;5;248;03m# Cleaner, more efficient approach to the above.[39;00m
+[38;5;252mfree[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'END {print(NR)}'[39m
+
+[38;5;248;03m# Output unique list of available sections under which to create a DEB package.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'!A[$1]++ {print($1)}'[39m[38;5;241m [39m[38;5;252m<<<[39m[38;5;241m [39m[38;5;214m"[39m[38;5;70;01m$([39;00m[38;5;252mdpkg-query[39m[38;5;241m [39m[38;5;252m--show[39m[38;5;241m [39m[38;5;252m-f[39m[38;5;252m=[39m[38;5;214m'${Section}\n'[39m[38;5;70;01m)[39;00m[38;5;214m"[39m
+
+[38;5;248;03m# Using process substitution (`<()` is NOT command substitution), with AWK and[39;00m
+[38;5;248;03m# its associative array variables, we can print just column 2 for lines whose[39;00m
+[38;5;248;03m# first column is equal to what's between the double-quotes.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{NR != 1 && A[$1]=$2} END {print(A["Mem:"])}'[39m[38;5;241m [39m[38;5;252m<[39m[38;5;252m([39m[38;5;252mfree[39m[38;5;241m [39m[38;5;252m-h[39m[38;5;252m)[39m
+[38;5;248;03m# While below is an easier and simpler solution to the above, it's not at all[39;00m
+[38;5;248;03m# the same, and in other cases, the above is definitely preferable.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/^Mem:/ {print($2)}'[39m[38;5;241m [39m[38;5;252m<[39m[38;5;252m([39m[38;5;252mfree[39m[38;5;241m [39m[38;5;252m-h[39m[38;5;252m)[39m
+
+[38;5;248;03m# Output list of unique uppercase-only, sigil-omitted variables used in FILE.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'[39m
+[38;5;214m    {[39m
+[38;5;214m        for(F=0; F<NF; F++){[39m
+[38;5;214m            if($F~/^\$[A-Z_]+$/){[39m
+[38;5;214m                A[$F]++[39m
+[38;5;214m            }[39m
+[38;5;214m        }[39m
+[38;5;214m    }[39m
+[38;5;214m    END {[39m
+[38;5;214m        for(I in A){[39m
+[38;5;214m            X=substr(I, 2, length(I))[39m
+[38;5;214m            printf("%s\n", X)[39m
+[38;5;214m        }[39m
+[38;5;214m    }[39m
+[38;5;214m'[39m[38;5;241m [39m[38;5;252mFILE[39m
+
+[38;5;248;03m# Output only lines from FILE between PATTERN_1 and PATTERN_2. Good for logs.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/PATTERN_1/,/PATTERN_2/ {print}'[39m[38;5;241m [39m[38;5;252mFILE[39m
+
+[38;5;248;03m# Pretty-print a table of an overview of the non-system users on the system.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-F[39m[38;5;241m [39m[38;5;214m':'[39m[38;5;241m [39m[38;5;214m'[39m
+[38;5;214m    BEGIN {[39m
+[38;5;214m        printf("%-17s %-4s %-4s %-s\n", "NAME", "UID", "GID", "SHELL")[39m
+[38;5;214m    }[39m
+[38;5;214m    $3 >= 1000 && $1 != "nobody" {[39m
+[38;5;214m        printf("%-17s %-d %-d %-s\n", $1, $3, $4, $7)[39m
+[38;5;214m    }[39m
+[38;5;214m'[39m[38;5;241m [39m[38;5;252m/etc/passwd[39m
+
+[38;5;248;03m# Display the total amount of MiB of RAM available in the machine. This is also[39;00m
+[38;5;248;03m# a painful but useful workaround to get the units comma-separated, as would be[39;00m
+[38;5;248;03m# doable with Bash's own `printf` built-in.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/^MemTotal:/ {printf("%'[39m[38;5;214m"'"[39m[38;5;214m'dMiB\n", $2 / 1024)}'[39m
+
+[38;5;248;03m# It's possible to sort strings in AWK, as well as uniq-ing, meaning you can[39;00m
+[38;5;248;03m# replace uniq(1) and sort(1) calls with just the one call of AWK. Granted, you[39;00m
+[38;5;248;03m# can use `sort -u` to do both, but AWK offers much more functionality.[39;00m
+[38;5;248;03m#[39;00m
+[38;5;248;03m# Unlike when using AWK to uniq-ify, uniq(1) only works by adjacency, meaning[39;00m
+[38;5;248;03m# the duplicate lines must be adjacent to one another for them to be handled.[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'[39m
+[38;5;214m	{[39m
+[38;5;214m		!Lines[$0]++[39m
+[38;5;214m	}[39m
+[38;5;214m	END {[39m
+[38;5;214m		asorti(Lines, Sorted)[39m
+[38;5;214m		for (Line in Sorted) {[39m
+[38;5;214m			print(Sorted[Line])[39m
+[38;5;214m		}[39m
+[38;5;214m	}[39m
+[38;5;214m'[39m[38;5;241m [39m[38;5;252mFILE[39m
+
+[38;5;248;03m# Remove duplicate lines[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'!seen[$0]++'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[38;5;248;03m# Remove all empty lines[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'NF > 0'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+
+[48;5;8m[24m cheat:awk [24m[0m
+[38;5;248;03m# To sum integers from a file or stdin, one integer per line:[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1\n2\n3\n'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{ sum += $1} END {print sum}'[39m
+
+[38;5;248;03m# To use a specific character as separator to sum integers from a file or stdin:[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1:2:3'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-F[39m[38;5;241m [39m[38;5;214m":"[39m[38;5;241m [39m[38;5;214m'{print $1+$2+$3}'[39m
+
+[38;5;248;03m# To print a multiplication table:[39;00m
+[38;5;252mseq[39m[38;5;241m [39m[38;5;75m9[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252msed[39m[38;5;241m [39m[38;5;214m'H;g'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-v[39m[38;5;241m [39m[38;5;87mRS[39m[38;5;252m=[39m[38;5;214m''[39m[38;5;241m [39m[38;5;214m'{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'[39m
+
+[38;5;248;03m# To specify an output separator character:[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'1 2 3'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'BEGIN {OFS=":"}; {print $1,$2,$3}'[39m
+
+[38;5;248;03m# To execute commands only on rows that satisfy a certain condtion[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"george jetson\nolive oyl\nbeetle bailey"[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$2=="bailey"{print $0}'[39m
+[38;5;248;03m#[39;00m
+[38;5;248;03m# To execute commands only on matching rows using regex[39;00m
+[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"george jetson\nolive oyl\nbeetle bailey"[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/ley$/{print $0}'[39m
+
+[48;5;8m[24m tldr:awk [24m[0m
+[38;5;248;03m# awk[39;00m
+[38;5;248;03m# A versatile programming language for working on files.[39;00m
+[38;5;248;03m# More information: <https://github.com/onetrueawk/awk>.[39;00m
+
+[38;5;248;03m# Print the fifth column (a.k.a. field) in a space-separated file:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{print $5}'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Print the second column of the lines containing "foo" in a space-separated file:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/foo/ {print $2}'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Print the last column of each line in a file, using a comma (instead of space) as a field separator:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;252m-F[39m[38;5;241m [39m[38;5;214m','[39m[38;5;241m [39m[38;5;214m'{print $NF}'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Sum the values in the first column of a file and print the total:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{s+=$1} END {print s}'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Print every third line starting from the first line:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'NR%3==1'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Print different values based on conditions:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'{if ($1 == "foo") print "Exact match foo"; else if ($1 ~ "bar") print "Partial match bar"; else print "Baz"}'[39m[38;5;241m [39m[38;5;252mpath/to/file[39m
+
+[38;5;248;03m# Print all lines where the 10th column value equals the specified value:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'($10 == value)'[39m
+
+[38;5;248;03m# Print all the lines which the 10th column value is between a min and a max:[39;00m
+[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'($10 >= min_value && $10 <= max_value)'[39m
