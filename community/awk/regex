@@ -1,19 +1,19 @@
-[48;5;8m[24m cheat.sheets:awk [24m[0m
-[38;5;252mPrint[39m[38;5;241m [39m[38;5;252monly[39m[38;5;241m [39m[38;5;252mlines[39m[38;5;241m [39m[38;5;252mthat[39m[38;5;241m [39m[38;5;252mmatch[39m[38;5;241m [39m[38;5;252mregex[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252mfile.txt[39m
-[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+ cheat.sheets:awk 
+Print only lines that match regex in file.txt
+awk '/regex/' file.txt
 
-[38;5;248;03m# Print only lines that do not match regex in file.txt[39;00m
-[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'!/regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+# Print only lines that do not match regex in file.txt
+awk '!/regex/' file.txt
 
-[38;5;248;03m# Print line if field 1 matches regex in file.txt[39;00m
-[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$1 ~ /regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+# Print line if field 1 matches regex in file.txt
+awk '$1 ~ /regex/' file.txt
 
-[38;5;248;03m# Print line if field 1 does NOT match regex in file.txt[39;00m
-[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$1 !~ /regex/'[39m[38;5;241m [39m[38;5;252mfile.txt[39m
+# Print line if field 1 does NOT match regex in file.txt
+awk '$1 !~ /regex/' file.txt
 
-[48;5;8m[24m cheat:awk [24m[0m
-[38;5;248;03m# To execute commands only on rows that satisfy a certain condtion[39;00m
-[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"george jetson\nolive oyl\nbeetle bailey"[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'$2=="bailey"{print $0}'[39m
-[38;5;248;03m#[39;00m
-[38;5;248;03m# To execute commands only on matching rows using regex[39;00m
-[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"george jetson\nolive oyl\nbeetle bailey"[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mawk[39m[38;5;241m [39m[38;5;214m'/ley$/{print $0}'[39m
+ cheat:awk 
+# To execute commands only on rows that satisfy a certain condtion
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '$2=="bailey"{print $0}'
+#
+# To execute commands only on matching rows using regex
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '/ley$/{print $0}'

@@ -1,204 +1,204 @@
-[48;5;8m[24m cheat.sheets:bash [24m[0m
-[38;5;248;03m# To implement a for loop:[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mWORD[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252mLIST[39m
-[38;5;70;01mdo[39;00m
-[38;5;241m    [39m[38;5;252mCOMMANDS[39m
-[38;5;70;01mdone[39;00m
-[38;5;248;03m# For example:[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mCurDay[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252mMonday[39m[38;5;241m [39m[38;5;252mTuesday[39m[38;5;241m [39m[38;5;252mWednesday[39m[38;5;241m [39m[38;5;252mThursday[39m[38;5;241m [39m[38;5;252mFriday[39m[38;5;241m [39m[38;5;252mSaturday[39m[38;5;241m [39m[38;5;252mSunday[39m
-[38;5;70;01mdo[39;00m
-[38;5;241m    [39m[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"%s\n"[39m[38;5;241m [39m[38;5;214m"[39m[38;5;87m$CurDay[39m[38;5;214m"[39m
-[38;5;70;01mdone[39;00m
+ cheat.sheets:bash 
+# To implement a for loop:
+for WORD in LIST
+do
+    COMMANDS
+done
+# For example:
+for CurDay in Monday Tuesday Wednesday Thursday Friday Saturday Sunday
+do
+    printf "%s\n" "$CurDay"
+done
 
-[38;5;248;03m# To implement a case statement:[39;00m
-[38;5;70;01mcase[39;00m[38;5;241m [39m[38;5;87m$1[39m[38;5;241m [39m[38;5;70;01min[39;00m
-[38;5;241m    [39m[38;5;75m0[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Found a '0'."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m1[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Found a '1'."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m2[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Found a '2'."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m3[39m[38;5;252m*[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Something beginning with '3' found."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;214m''[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Nothing (null) found."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;252m*[39m[38;5;252m)[39m
-[38;5;241m        [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"Anything else found."[39m[38;5;241m [39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;70;01mesac[39;00m
+# To implement a case statement:
+case $1 in
+    0)
+        echo "Found a '0'." ;;
+    1)
+        echo "Found a '1'." ;;
+    2)
+        echo "Found a '2'." ;;
+    3*)
+        echo "Something beginning with '3' found." ;;
+    '')
+        echo "Nothing (null) found." ;;
+    *)
+        echo "Anything else found." ;;
+esac
 
-[38;5;248;03m# Turn on built-in Bash debugging output:[39;00m
-[38;5;38mset[39m[38;5;241m [39m[38;5;252m-x[39m
-[38;5;248;03m# Turn the above off again:[39;00m
-[38;5;38mset[39m[38;5;241m [39m[38;5;252m+x[39m
+# Turn on built-in Bash debugging output:
+set -x
+# Turn the above off again:
+set +x
 
-[38;5;248;03m# Retrieve N-th piped command exit status[39;00m
-[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'foo'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mgrep[39m[38;5;241m [39m[38;5;252m-F[39m[38;5;241m [39m[38;5;214m'foo'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252msed[39m[38;5;241m [39m[38;5;214m's/foo/bar/'[39m
-[38;5;38mecho[39m[38;5;241m [39m[38;5;214m${[39m[38;5;87mPIPESTATUS[39m[38;5;252m[0][39m[38;5;214m}[39m[38;5;241m  [39m[38;5;248;03m# replace 0 with N[39;00m
+# Retrieve N-th piped command exit status
+printf 'foo' | grep -F 'foo' | sed 's/foo/bar/'
+echo ${PIPESTATUS[0]}  # replace 0 with N
 
-[38;5;248;03m# Lock file:[39;00m
-[38;5;252m([39m[38;5;241m [39m[38;5;38mset[39m[38;5;241m [39m[38;5;252m-o[39m[38;5;241m [39m[38;5;252mnoclobber[39m[38;5;252m;[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;252m>[39m[38;5;241m [39m[38;5;252mmy.lock[39m[38;5;241m [39m[38;5;252m)[39m[38;5;241m [39m[38;5;252m||[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m'Failed to create lock file'[39m
+# Lock file:
+( set -o noclobber; echo > my.lock ) || echo 'Failed to create lock file'
 
-[38;5;248;03m# Fork bomb. Do not run this! Has the potential to wreak havoc. It repeatedly[39;00m
-[38;5;248;03m# and quickly spawns a lot of processes until the system eventually locks up.[39;00m
-[38;5;252m:[39m[38;5;252m([39m[38;5;252m)[39m[38;5;252m{[39m[38;5;241m [39m[38;5;252m:[39m[38;5;252m|[39m[38;5;252m:[39m[38;5;252m&[39m[38;5;241m [39m[38;5;252m}[39m[38;5;252m;[39m[38;5;252m:[39m
-[38;5;248;03m# An alternative, easier-to-understand version without the obfuscation:[39;00m
-[38;5;252mfunc[39m[38;5;252m([39m[38;5;252m)[39m[38;5;252m{[39m[38;5;241m [39m[38;5;252mfunc[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mfunc[39m[38;5;241m [39m[38;5;252m&[39m[38;5;241m [39m[38;5;252m}[39m[38;5;252m;[39m[38;5;241m [39m[38;5;252mfunc[39m
+# Fork bomb. Do not run this! Has the potential to wreak havoc. It repeatedly
+# and quickly spawns a lot of processes until the system eventually locks up.
+:(){ :|:& };:
+# An alternative, easier-to-understand version without the obfuscation:
+func(){ func | func & }; func
 
-[38;5;248;03m# Unix Roulette, courtesy of Bigown's answer in the joke thread.[39;00m
-[38;5;248;03m#[39;00m
-[38;5;248;03m#   DANGER! Don't execute![39;00m
-[38;5;248;03m#[39;00m
-[38;5;248;03m# Luckily, most modern setups have `--preserve-root` on by default, so this[39;00m
-[38;5;248;03m# will be null and void, but even so, not even remotely worth the risk![39;00m
-[38;5;252m[[39m[38;5;241m [39m[38;5;252m$[39m[38;5;252m[[39m[38;5;241m [39m[38;5;87m$RANDOM[39m[38;5;241m [39m[38;5;252m%[39m[38;5;241m [39m[38;5;75m6[39m[38;5;241m [39m[38;5;252m][39m[38;5;241m [39m[38;5;252m=[39m[38;5;252m=[39m[38;5;241m [39m[38;5;75m0[39m[38;5;241m [39m[38;5;252m][39m[38;5;241m [39m[38;5;252m&&[39m[38;5;241m [39m[38;5;252mrm[39m[38;5;241m [39m[38;5;252m-rf[39m[38;5;241m [39m[38;5;252m/*[39m[38;5;241m [39m[38;5;252m||[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;252mClick[39m[38;5;241m [39m[38;5;248;03m#Roulette[39;00m
+# Unix Roulette, courtesy of Bigown's answer in the joke thread.
+#
+#   DANGER! Don't execute!
+#
+# Luckily, most modern setups have `--preserve-root` on by default, so this
+# will be null and void, but even so, not even remotely worth the risk!
+[ $[ $RANDOM % 6 ] == 0 ] && rm -rf /* || echo Click #Roulette
 
-[38;5;248;03m# A for loop one-liner.[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mCurIter[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252m{[39m[38;5;75m1[39m[38;5;252m..4[39m[38;5;252m}[39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mdo[39;00m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"[39m[38;5;87m$CurIter[39m[38;5;214m"[39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mdone[39;00m
-[38;5;248;03m# Alternative, slightly-cleaner syntax:[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mCurIter[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252m{[39m[38;5;75m1[39m[38;5;252m..4[39m[38;5;252m}[39m[38;5;252m;[39m[38;5;241m [39m[38;5;252m{[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"[39m[38;5;87m$CurIter[39m[38;5;214m"[39m[38;5;252m;[39m[38;5;241m [39m[38;5;252m}[39m
+# A for loop one-liner.
+for CurIter in {1..4}; do echo "$CurIter"; done
+# Alternative, slightly-cleaner syntax:
+for CurIter in {1..4}; { echo "$CurIter"; }
 
-[38;5;248;03m# Test for a variable being equal to (`-eq`) an integer (`0`).[39;00m
-[38;5;70;01mif[39;00m[38;5;241m [39m[38;5;252m[[39m[38;5;241m [39m[38;5;87m$var[39m[38;5;241m [39m[38;5;252m-eq[39m[38;5;241m [39m[38;5;75m0[39m[38;5;241m [39m[38;5;252m][39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mthen[39;00m
-[38;5;241m    [39m[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"Variable '\$var' is equal to '0'.\n"[39m
-[38;5;70;01mfi[39;00m
+# Test for a variable being equal to (`-eq`) an integer (`0`).
+if [ $var -eq 0 ]; then
+    printf "Variable '\$var' is equal to '0'.\n"
+fi
 
-[38;5;248;03m# Test for a `PATH` executable existing as a file, but note that aliases and[39;00m
-[38;5;248;03m# functions will also output and result in a `0` exit status.[39;00m
-[38;5;38mcommand[39m[38;5;241m [39m[38;5;252m-v[39m[38;5;241m [39m[38;5;214m${[39m[38;5;87mprogram[39m[38;5;214m}[39m[38;5;241m [39m[38;5;252m>/dev/null[39m[38;5;241m [39m[38;5;75m2[39m[38;5;252m>[39m[38;5;252m&[39m[38;5;75m1[39m[38;5;241m [39m[38;5;252m||[39m[38;5;241m [39m[38;5;252merror[39m[38;5;241m [39m[38;5;214m"[39m[38;5;214m${[39m[38;5;87mprogram[39m[38;5;214m}[39m[38;5;214m not installed[39m[38;5;214m"[39m
-[38;5;248;03m# However, that is a solution commonly found in a script using the Bourne[39;00m
-[38;5;248;03m# shell, so in this case, an alternative, Bash-like, and more accurate version[39;00m
-[38;5;248;03m# could be:[39;00m
-[38;5;70;01mif[39;00m[38;5;241m [39m[38;5;252m![39m[38;5;241m [39m[38;5;38mtype[39m[38;5;241m [39m[38;5;252m-fP[39m[38;5;241m [39m[38;5;252mbash[39m[38;5;241m [39m[38;5;252m>[39m[38;5;241m [39m[38;5;252m/dev/null[39m[38;5;241m [39m[38;5;75m2[39m[38;5;252m>[39m[38;5;252m&[39m[38;5;75m1[39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mthen[39;00m
-[38;5;241m    [39m[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m"ERROR: Dependency 'bash' not met."[39m[38;5;241m [39m[38;5;252m>[39m[38;5;252m&[39m[38;5;75m2[39m
-[38;5;241m    [39m[38;5;38mexit[39m[38;5;241m [39m[38;5;75m1[39m
-[38;5;70;01mfi[39;00m
+# Test for a `PATH` executable existing as a file, but note that aliases and
+# functions will also output and result in a `0` exit status.
+command -v ${program} >/dev/null 2>&1 || error "${program} not installed"
+# However, that is a solution commonly found in a script using the Bourne
+# shell, so in this case, an alternative, Bash-like, and more accurate version
+# could be:
+if ! type -fP bash > /dev/null 2>&1; then
+    printf "ERROR: Dependency 'bash' not met." >&2
+    exit 1
+fi
 
-[38;5;248;03m# Send both STDOUT and STDERR from COMMAND to FILE.[39;00m
-[38;5;252mCOMMAND[39m[38;5;241m [39m[38;5;252m>[39m[38;5;241m [39m[38;5;252mFILE[39m[38;5;241m [39m[38;5;75m2[39m[38;5;252m>[39m[38;5;252m&[39m[38;5;75m1[39m
-[38;5;248;03m# Send STDOUT and STDERR from COMMAND to `/dev/null`, where data goes to die.[39;00m
-[38;5;252mCOMMAND[39m[38;5;241m [39m[38;5;252m>[39m[38;5;241m [39m[38;5;252m/dev/null[39m[38;5;241m [39m[38;5;75m2[39m[38;5;252m>[39m[38;5;252m&[39m[38;5;75m1[39m
-[38;5;248;03m# Pipe the STDOUT and STDERR from COMMAND_1 to COMMAND_2.[39;00m
-[38;5;252mCOMMAND_1[39m[38;5;241m [39m[38;5;252m|[39m[38;5;252m&[39m[38;5;241m [39m[38;5;252mCOMMAND_2[39m
+# Send both STDOUT and STDERR from COMMAND to FILE.
+COMMAND > FILE 2>&1
+# Send STDOUT and STDERR from COMMAND to `/dev/null`, where data goes to die.
+COMMAND > /dev/null 2>&1
+# Pipe the STDOUT and STDERR from COMMAND_1 to COMMAND_2.
+COMMAND_1 |& COMMAND_2
 
-[38;5;248;03m# Verbosely convert whitespaces (` `) to underscores (`_`) in file names.[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mname[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252m*[39m[38;5;214m\ [39m[38;5;252m*[39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mdo[39;00m[38;5;241m [39m[38;5;252mmv[39m[38;5;241m [39m[38;5;252m-vn[39m[38;5;241m [39m[38;5;214m"[39m[38;5;87m$name[39m[38;5;214m"[39m[38;5;241m [39m[38;5;214m"[39m[38;5;214m${[39m[38;5;87mname[39m[38;5;252m// /_[39m[38;5;214m}[39m[38;5;214m"[39m[38;5;252m;[39m[38;5;241m [39m[38;5;70;01mdone[39;00m
+# Verbosely convert whitespaces (` `) to underscores (`_`) in file names.
+for name in *\ *; do mv -vn "$name" "${name// /_}"; done
 
-[38;5;248;03m# Expand a regular variable.[39;00m
-[38;5;87m$Var[39m
-[38;5;248;03m# Some people like to cuddle the variable name with braces ('{' and '}') but[39;00m
-[38;5;248;03m# this is usually superfluous and wasted keystrokes, unless you need to protect[39;00m
-[38;5;248;03m# the variable name from having other characters included, as in the below[39;00m
-[38;5;248;03m# example, or you're using one of the many features of parameter expansion.[39;00m
-[38;5;214m"[39m[38;5;214m${[39m[38;5;87mVar[39m[38;5;214m}[39m[38;5;214msome text[39m[38;5;214m"[39m
+# Expand a regular variable.
+$Var
+# Some people like to cuddle the variable name with braces ('{' and '}') but
+# this is usually superfluous and wasted keystrokes, unless you need to protect
+# the variable name from having other characters included, as in the below
+# example, or you're using one of the many features of parameter expansion.
+"${Var}some text"
 
-[38;5;248;03m# Access a given index in an array. In this example, you don't technically[39;00m
-[38;5;248;03m# need to specify the element, because by default the first element is used.[39;00m
-[38;5;248;03m# As with many other languages, note that indices are 0-first, so 1 is the 2nd.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m[0][39m[38;5;214m}[39m
-[38;5;248;03m# You can use arithmetic between '[' and ']' as well.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m[2+3][39m[38;5;214m}[39m
+# Access a given index in an array. In this example, you don't technically
+# need to specify the element, because by default the first element is used.
+# As with many other languages, note that indices are 0-first, so 1 is the 2nd.
+${Var[0]}
+# You can use arithmetic between '[' and ']' as well.
+${Var[2+3]}
 
-[38;5;248;03m# Expand variable to the length of that to which the variable would expand.[39;00m
-[38;5;214m${#[39m[38;5;87mVar[39m[38;5;214m}[39m
+# Expand variable to the length of that to which the variable would expand.
+${#Var}
 
-[38;5;248;03m# Expand array variable to the number of elements/indices. You may find that[39;00m
-[38;5;248;03m# `[*]` works as well as `[@]`, in this case.[39;00m
-[38;5;214m${#[39m[38;5;87mVar[39m[38;5;252m[@][39m[38;5;214m}[39m
+# Expand array variable to the number of elements/indices. You may find that
+# `[*]` works as well as `[@]`, in this case.
+${#Var[@]}
 
-[38;5;248;03m# Expand variable to a substring. In this case, imagine `Var` is equal to the[39;00m
-[38;5;248;03m# string 'thing', but the offset is 2 and the length is 1, giving us an 'i'.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m:[39m[38;5;87m2[39m[38;5;252m:[39m[38;5;87m1[39m[38;5;214m}[39m
+# Expand variable to a substring. In this case, imagine `Var` is equal to the
+# string 'thing', but the offset is 2 and the length is 1, giving us an 'i'.
+${Var:2:1}
 
-[38;5;248;03m# Expand variable to a substring by removing the matched glob pattern from left[39;00m
-[38;5;248;03m# to right. To make this global (IE: greedy) use two '#' characters. So, in[39;00m
-[38;5;248;03m# this example, everything, from left to right, up to and including a 'T' or[39;00m
-[38;5;248;03m# 't', will be removed, but it would only happen once.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m#*[Tt][39m[38;5;214m}[39m
-[38;5;248;03m# As above, but from right to left. Use two '%' characters for a greedy match.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m%[Tt]*[39m[38;5;214m}[39m
+# Expand variable to a substring by removing the matched glob pattern from left
+# to right. To make this global (IE: greedy) use two '#' characters. So, in
+# this example, everything, from left to right, up to and including a 'T' or
+# 't', will be removed, but it would only happen once.
+${Var#*[Tt]}
+# As above, but from right to left. Use two '%' characters for a greedy match.
+${Var%[Tt]*}
 
-[38;5;248;03m# Change how the variable expands by using pattern substitution. This uses glob[39;00m
-[38;5;248;03m# pattern matching, not REGEX. If the first '/' is instead '//', a greedy match[39;00m
-[38;5;248;03m# is performed.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m/PATTERN/REPLACEMENT/[39m[38;5;214m}[39m
-[38;5;248;03m# A good example of the above, which will list directories in PATH which exist[39;00m
-[38;5;248;03m# and are directories. It works because all instances of ':' are replaced with[39;00m
-[38;5;248;03m# a whitespace, causing find(1) to see multiple directories (fields) in which[39;00m
-[38;5;248;03m# to search.[39;00m
-[38;5;252mfind[39m[38;5;241m [39m[38;5;214m${[39m[38;5;87mPATH[39m[38;5;252m//[39m[38;5;252m:[39m[38;5;252m/ [39m[38;5;214m}[39m[38;5;241m [39m[38;5;252m-type[39m[38;5;241m [39m[38;5;252md[39m
+# Change how the variable expands by using pattern substitution. This uses glob
+# pattern matching, not REGEX. If the first '/' is instead '//', a greedy match
+# is performed.
+${Var/PATTERN/REPLACEMENT/}
+# A good example of the above, which will list directories in PATH which exist
+# and are directories. It works because all instances of ':' are replaced with
+# a whitespace, causing find(1) to see multiple directories (fields) in which
+# to search.
+find ${PATH//:/ } -type d
 
-[38;5;248;03m# Expand the variable to the string between `:-` and the closing `}`, if that[39;00m
-[38;5;248;03m# variable doesn't already have a value. This can be useful to set a default.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;70;01m:-[39;00m[38;5;87mDefault[39m[38;5;252m Value[39m[38;5;214m}[39m
+# Expand the variable to the string between `:-` and the closing `}`, if that
+# variable doesn't already have a value. This can be useful to set a default.
+${Var:-Default Value}
 
-[38;5;248;03m# This is a way of displaying an error message if the contents of the variable[39;00m
-[38;5;248;03m# is empty. It will also immediately exit with an exit status of 1.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m:[39m[38;5;252m?This is an error message.[39m[38;5;214m}[39m
+# This is a way of displaying an error message if the contents of the variable
+# is empty. It will also immediately exit with an exit status of 1.
+${Var:?This is an error message.}
 
-[38;5;248;03m# Indirect expansion exists in a couple of ways in BASH. If `Var` is equal to[39;00m
-[38;5;248;03m# `OtherVar`, and that `OtherVar` is equal to `true`, the below example would[39;00m
-[38;5;248;03m# expand to `true`.[39;00m
-[38;5;214m${[39m[38;5;252m!Var[39m[38;5;214m}[39m
+# Indirect expansion exists in a couple of ways in BASH. If `Var` is equal to
+# `OtherVar`, and that `OtherVar` is equal to `true`, the below example would
+# expand to `true`.
+${!Var}
 
-[38;5;248;03m# Expand variable so that the first letter is uppercase. Use two '^' (carets)[39;00m
-[38;5;248;03m# if you want the entire contents of the variable to change to uppercase.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m^[39m[38;5;214m}[39m
-[38;5;248;03m# As above, but convert to lowercase. Use two ',' characters to transform the[39;00m
-[38;5;248;03m# entire string to which `Var` expands.[39;00m
-[38;5;214m${[39m[38;5;87mVar[39m[38;5;252m,[39m[38;5;214m}[39m
+# Expand variable so that the first letter is uppercase. Use two '^' (carets)
+# if you want the entire contents of the variable to change to uppercase.
+${Var^}
+# As above, but convert to lowercase. Use two ',' characters to transform the
+# entire string to which `Var` expands.
+${Var,}
 
-[48;5;8m[24m cheat:bash [24m[0m
-[38;5;248;03m# To implement a for loop:[39;00m
-[38;5;70;01mfor[39;00m[38;5;241m [39m[38;5;252mfile[39m[38;5;241m [39m[38;5;70;01min[39;00m[38;5;241m [39m[38;5;252m*[39m[38;5;252m;[39m
-[38;5;70;01mdo[39;00m[38;5;241m [39m
-[38;5;241m    [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;87m$file[39m[38;5;241m [39m[38;5;252mfound[39m[38;5;252m;[39m
-[38;5;70;01mdone[39;00m
+ cheat:bash 
+# To implement a for loop:
+for file in *;
+do 
+    echo $file found;
+done
 
-[38;5;248;03m# To implement a case command:[39;00m
-[38;5;70;01mcase[39;00m[38;5;241m [39m[38;5;214m"[39m[38;5;87m$1[39m[38;5;214m"[39m
-[38;5;70;01min[39;00m
-[38;5;241m    [39m[38;5;75m0[39m[38;5;252m)[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"zero found"[39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m1[39m[38;5;252m)[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"one found"[39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m2[39m[38;5;252m)[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"two found"[39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;241m    [39m[38;5;75m3[39m[38;5;252m*[39m[38;5;252m)[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"something beginning with 3 found"[39m[38;5;252m;[39m[38;5;252m;[39m
-[38;5;70;01mesac[39;00m
+# To implement a case command:
+case "$1"
+in
+    0) echo "zero found";;
+    1) echo "one found";;
+    2) echo "two found";;
+    3*) echo "something beginning with 3 found";;
+esac
 
-[38;5;248;03m# To turn on debugging:[39;00m
-[38;5;38mset[39m[38;5;241m [39m[38;5;252m-x[39m
+# To turn on debugging:
+set -x
 
-[38;5;248;03m# To turn off debugging:[39;00m
-[38;5;38mset[39m[38;5;241m [39m[38;5;252m+x[39m
+# To turn off debugging:
+set +x
 
-[38;5;248;03m# Retrieve N-th piped command exit status:[39;00m
-[38;5;38mprintf[39m[38;5;241m [39m[38;5;214m'foo'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mfgrep[39m[38;5;241m [39m[38;5;214m'foo'[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252msed[39m[38;5;241m [39m[38;5;214m's/foo/bar/'[39m
-[38;5;38mecho[39m[38;5;241m [39m[38;5;214m${[39m[38;5;87mPIPESTATUS[39m[38;5;252m[0][39m[38;5;214m}[39m[38;5;241m  [39m[38;5;248;03m# replace 0 with N[39;00m
+# Retrieve N-th piped command exit status:
+printf 'foo' | fgrep 'foo' | sed 's/foo/bar/'
+echo ${PIPESTATUS[0]}  # replace 0 with N
 
-[38;5;248;03m# To create a lockfile:[39;00m
-[38;5;252m([39m[38;5;241m [39m[38;5;38mset[39m[38;5;241m [39m[38;5;252m-o[39m[38;5;241m [39m[38;5;252mnoclobber[39m[38;5;252m;[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;252m>[39m[38;5;241m [39m[38;5;252mmy.lock[39m[38;5;241m [39m[38;5;252m)[39m[38;5;241m [39m[38;5;252m||[39m[38;5;241m [39m[38;5;38mecho[39m[38;5;241m [39m[38;5;214m'Failed to create lock file'[39m
+# To create a lockfile:
+( set -o noclobber; echo > my.lock ) || echo 'Failed to create lock file'
 
-[48;5;8m[24m tldr:bash [24m[0m
-[38;5;248;03m# bash[39;00m
-[38;5;248;03m# Bourne-Again SHell, an `sh`-compatible command-line interpreter.[39;00m
-[38;5;248;03m# See also: `zsh`, `histexpand` (history expansion).[39;00m
-[38;5;248;03m# More information: <https://gnu.org/software/bash/>.[39;00m
+ tldr:bash 
+# bash
+# Bourne-Again SHell, an `sh`-compatible command-line interpreter.
+# See also: `zsh`, `histexpand` (history expansion).
+# More information: <https://gnu.org/software/bash/>.
 
-[38;5;248;03m# Start an interactive shell session:[39;00m
-[38;5;252mbash[39m
+# Start an interactive shell session:
+bash
 
-[38;5;248;03m# Start an interactive shell session without loading startup configs:[39;00m
-[38;5;252mbash[39m[38;5;241m [39m[38;5;252m--norc[39m
+# Start an interactive shell session without loading startup configs:
+bash --norc
 
-[38;5;248;03m# Execute specific [c]ommands:[39;00m
-[38;5;252mbash[39m[38;5;241m [39m[38;5;252m-c[39m[38;5;241m [39m[38;5;214m"echo 'bash is executed'"[39m
+# Execute specific [c]ommands:
+bash -c "echo 'bash is executed'"
 
-[38;5;248;03m# Execute a specific script:[39;00m
-[38;5;252mbash[39m[38;5;241m [39m[38;5;252mpath/to/script.sh[39m
+# Execute a specific script:
+bash path/to/script.sh
 
-[38;5;248;03m# Execute a specific script while printing each command before executing it:[39;00m
-[38;5;252mbash[39m[38;5;241m [39m[38;5;252m-x[39m[38;5;241m [39m[38;5;252mpath/to/script.sh[39m
+# Execute a specific script while printing each command before executing it:
+bash -x path/to/script.sh
 
-[38;5;248;03m# Execute a specific script and stop at the first [e]rror:[39;00m
-[38;5;252mbash[39m[38;5;241m [39m[38;5;252m-e[39m[38;5;241m [39m[38;5;252mpath/to/script.sh[39m
+# Execute a specific script and stop at the first [e]rror:
+bash -e path/to/script.sh
 
-[38;5;248;03m# Execute specific commands from `stdin`:[39;00m
-[38;5;38mecho[39m[38;5;241m [39m[38;5;214m"echo 'bash is executed'"[39m[38;5;241m [39m[38;5;252m|[39m[38;5;241m [39m[38;5;252mbash[39m
+# Execute specific commands from `stdin`:
+echo "echo 'bash is executed'" | bash

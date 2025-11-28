@@ -1,0 +1,20 @@
+/*
+ * Perhaps, I misunderstand your problem but this worked for me with no
+ * errors. Add to your build.zig:
+ */
+
+ exe.addIncludeDir("path_to_your_cglm/cglm/include");
+ exe.addLibPath("path_to_your_cglm/cglm/win/Release");
+
+ exe.linkSystemLibrary("cglm");
+
+/*
+ * Also, the Discord and reddit Zig communities are very active so
+ * consider posting there. Have a look at this page:
+ * <https://github.com/ziglang/zig/wiki/Community>.
+ * There is also the [Zig Forum][1].
+ * 
+ *   [1]: https://zigforum.org/
+ * 
+ * [user3475861] [so/q/66426511] [cc by-sa 3.0]
+ */

@@ -1,0 +1,8 @@
+/* In `bash`, you don't need to do anything special: */
+
+ $ num=1
+ $ num=$(( $num + 1 ))
+ $ echo $num
+ 2
+
+/* [NPE] [so/q/8723987] [cc by-sa 3.0] */

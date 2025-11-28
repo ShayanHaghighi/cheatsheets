@@ -1,0 +1,17 @@
+# The `;&` and `;;&` operators were introduced in bash 4.0, so if you
+# want to stick with a five year old version of bash, you'll either have
+# to repeat code, or use `if`s.
+
+ if (( a == 1)); then echo quick; fi
+ if (( a > 0 && a <= 2)); then echo brown; fi 
+ if (( a > 0 && a <= 3)); then echo fox; fi
+ if (( a == 4)); then echo jumped; fi
+
+# or find some other way to achieve the actual goal.
+# 
+# (On a side note, [don't use all uppercase variable names][1]. You risk
+# overwriting special shell variables or environment variables.)
+# 
+  # [1]: https://stackoverflow.com/q/673055/1524545
+# 
+# [geirha] [so/q/12010686] [cc by-sa 3.0]

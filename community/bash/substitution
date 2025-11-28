@@ -1,0 +1,29 @@
+# To replace the *first* occurrence of a pattern with a given string,
+# use <code>${*parameter*/*pattern*/*string*}</code>:
+
+ #!/bin/bash
+ firstString="I love Suzi and Marry"
+ secondString="Sara"
+ echo "${firstString/Suzi/$secondString}"    
+ # prints 'I love Sara and Marry'
+
+# To replace *all* occurrences, use
+# <code>${*parameter*//*pattern*/*string*}</code>:
+
+ message='The secret code is 12345'
+ echo "${message//[0-9]/X}"           
+ # prints 'The secret code is XXXXX'
+
+# (This is documented in [the *Bash Reference Manual*, &sect;3.5.3
+# "Shell Parameter
+# Expansion"](https://www.gnu.org/software/bash/manual/bash.htmlShell-
+# Parameter-Expansion).)
+# 
+# Note that this feature is not specified by POSIX &mdash; it's a Bash
+# extension &mdash; so not all Unix shells implement it. For the
+# relevant POSIX documentation, see [*The Open Group Technical Standard
+# Base Specifications, Issue 7*, the *Shell & Utilities* volume,
+# &sect;2.6.2 "Parameter Expansion"](http://pubs.opengroup.org/onlinepub
+# s/9699919799/utilities/V3_chap02.htmltag_18_06_02).
+# 
+# [ruakh] [so/q/13210880] [cc by-sa 3.0]

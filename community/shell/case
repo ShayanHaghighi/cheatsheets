@@ -1,0 +1,8 @@
+/*
+ * Yes, anything that is after `#` in a line is considered as a comment.
+ * See [this][1] for the switch case syntax.
+ * 
+ *   [1]: https://www.tutorialspoint.com/unix/case-esac-statement.htm
+ * 
+ * [Visanth Sampath] [so/q/57741795] [cc by-sa 3.0]
+ */

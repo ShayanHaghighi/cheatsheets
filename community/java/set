@@ -1,0 +1,26 @@
+// The simplest one-line solution is this:
+
+ set1.addAll(set2); // Union
+
+// <!-- separator -->
+
+ set1.retainAll(set2); // Intersection
+
+/*
+ * The above solution is **destructive** meaning that contents of the
+ * original *set1* my change. If you don't want to touch your existing
+ * sets, create a new set:
+ */
+
+ Set<E> result = new HashSet<>(set1);
+  // └─ your specific type
+
+// <!-- separator -->
+
+ result.addAll(set2); // Union
+
+// <!-- separator -->
+
+ result.retainAll(set2); // Intersection
+
+// [Mahozad] [so/q/51113134] [cc by-sa 3.0]

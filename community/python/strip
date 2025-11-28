@@ -1,0 +1,10 @@
+ >>> "    xyz     ".rstrip()
+ '    xyz'
+
+string.strip() strips whitespace
+
+#  There is more about `rstrip` in [the documentation][1].
+#  
+  #  [1]: http://docs.python.org/library/stdtypes.htmlstr.rstrip
+#  
+#  [SilentGhost] [so/q/2372573] [cc by-sa 3.0]

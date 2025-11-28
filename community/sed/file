@@ -1,0 +1,31 @@
+ cheat.sheets:sed 
+# Preview a file edit, via substitution.
+sudo sed 's/Name=Xfce Session/Name=Xfce_Session/' FILE
+
+# Edit a file (adding -i flag), in-place; changes are made to the file(s).
+sudo sed -i 's/Name=Xfce Session/Name=Xfce_Session/' FILE
+
+# Replace tabs with 4 spaces (changes are written to file itself)
+sed -i 's/\t/    /g' FILE
+
+# Remove trailing spaces (changes are written to file itself)
+sed -i -E "s/\s+$//g" FILE
+
+# Remove empty lines (changes are written to file itself)
+sed -i -E "/^\s*$/d" FILE
+
+ cheat:sed 
+# To replace all occurrences of "day" with "night" and write to stdout:
+sed 's/day/night/g' <file>
+
+# To replace all occurrences of "day" with "night" within <file>:
+sed -i 's/day/night/g' <file>
+
+# To remove leading spaces:
+sed -i -r 's/^\s+//g' <file>
+
+# To remove empty lines and print results to stdout:
+sed '/^$/d' <file>
+
+# To replace newlines in multiple lines:
+sed ':a;N;$!ba;s/\n//g' <file>

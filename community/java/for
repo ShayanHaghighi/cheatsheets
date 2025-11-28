@@ -1,0 +1,54 @@
+/*
+ * It's called a **for-each** or **enhanced `for` statement.** See [the
+ * JLS &sect;14.14.2][1].
+ * 
+ * It's **[syntactic sugar][2]** provided by the compiler for iterating
+ * over [`Iterable`][3]s and arrays. The following are equivalent ways to
+ * iterate over a list:
+ */
+
+ List<Foo> foos = ...;
+ for (Foo foo : foos)
+ {
+     foo.bar();
+ }
+
+ // equivalent to:
+ List<Foo> foos = ...;
+ for (Iterator<Foo> iter = foos.iterator(); iter.hasNext();)
+ {
+     Foo foo = iter.next();
+     foo.bar();
+ }
+
+// and these are two equivalent ways to iterate over an array:
+
+ int[] nums = ...;
+ for (int num : nums)
+ {
+     System.out.println(num);
+ }
+
+ // equivalent to:
+ int[] nums = ...;
+ for (int i=0; i<nums.length; i++)
+ {
+     int num = nums[i];
+     System.out.println(num);
+ }
+
+/*
+ * ###Further reading
+ * - https:stackoverflow.com/questions/3433282/java-for-each-loop
+ * - [The For-Each Loop][4]
+ * 
+ *   [1]: http:docs.oracle.com/javase/specs/jls/se8/html/jls-14.html#jl
+ * s-14.14.2
+ *   [2]: http:en.wikipedia.org/wiki/Syntactic_sugar
+ *   [3]:
+ * http:download.oracle.com/javase/8/docs/api/java/lang/Iterable.html
+ *   [4]: http:download.oracle.com/javase/1.5.0/docs/guide/language/for
+ * each.html
+ * 
+ * [Matt Ball] [so/q/7763131] [cc by-sa 3.0]
+ */

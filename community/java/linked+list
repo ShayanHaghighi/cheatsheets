@@ -1,0 +1,27 @@
+/*
+ * If you need a general-purpose `List`, use `java.util.LinkedList`. It's
+ * a standard class, mature, well-tested, well-understood by almost any
+ * Java dev... and, ofc, it's concise, because you don't have to
+ * implement it.
+ * 
+ * Actually, don't use it: use `java.util.ArrayList` or
+ * `java.util.ArrayDeque`, they out-perform `LinkedList` in almost all
+ * circumstances. See [When to use LinkedList over ArrayList in
+ * Java?](https:stackoverflow.com/questions/322715/when-to-use-
+ * linkedlist-over-arraylist-in-java)
+ * 
+ * If you _really_ need something more specialized, implement your own,
+ * but only if you _really, really_ need it.
+ * 
+ * Only make your class implement `java.util.List` if you actually need
+ * it to.
+ * 
+ * A good starting point to avoid having to implement "everything" in the
+ * interface is to extend [`java.util.AbstractList`](https:docs.oracle.
+ * com/javase/8/docs/api/java/util/AbstractList.html): this only requires
+ * you to provide an implementation of `get(int)`, `size()` and, if you
+ * want the list to be modifiable, `set(int, E)` (you may well want to
+ * override others to get better performance for a linked list).
+ * 
+ * [Andy Turner] [so/q/68832336] [cc by-sa 3.0]
+ */
