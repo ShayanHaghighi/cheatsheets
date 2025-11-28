@@ -1,0 +1,6 @@
+# Web Root Permissions
+sudo chgrp -R www-data /var/www/iotHub
+sudo find /var/www/iotHub -type d -exec chmod g+rx {} +
+sudo find /var/www/iotHub -type f -exec chmod g+r {} +
+
+#  Use this when Apache needs group read access to the deployed files.

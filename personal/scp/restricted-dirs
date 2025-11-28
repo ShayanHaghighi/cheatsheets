@@ -1,0 +1,6 @@
+# Two-Step Copy
+# 1) scp into a directory you own.
+# 2) sudo mv the file into the privileged destination once it is on the machine.
+
+# Rationale
+#  Avoids permission errors when pushing directly into root-owned paths.

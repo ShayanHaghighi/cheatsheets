@@ -1,0 +1,9 @@
+# Minimal WSGI Loader
+import sys
+
+app_path = '/var/www/<app>'
+sys.path.insert(0, app_path)
+
+from app import app as application
+
+#  Make sure this file lives where WSGIScriptAlias points.

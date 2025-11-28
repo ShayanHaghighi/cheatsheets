@@ -1,0 +1,14 @@
+# UNIX Roots
+#  Bell Labs created UNIX with the kernel + shell + utilities split, inspiring later systems.
+
+# GNU and GPL
+#  Stallman launched the GNU project and the GPL to keep software free after AT&T tightened UNIX licensing.
+
+# Linux Arrival
+#  Linus Torvalds wrote the Linux kernel, which paired with GNU userland to form GNU/Linux.
+
+# BSD Lineage
+#  BSD derivatives feed macOS and many appliances (NeXTSTEP -> Darwin -> XNU).
+
+# Windows Path
+#  Windows evolved from an MS-DOS shell to the NT kernel family starting with XP.

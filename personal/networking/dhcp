@@ -1,0 +1,5 @@
+# DHCP Reservation
+#  Pin a device's MAC to a static lease inside the router UI so local services keep the same IP.
+
+# Follow Up
+#  TODO capture DNS mask details and secure resolver picks.

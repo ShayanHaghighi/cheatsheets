@@ -1,0 +1,10 @@
+# cmp a, b
+#  Updates ZF and CF based on the relation between operands.
+
+# Outcomes
+a < b  -> ZF=0 CF=1
+a = b  -> ZF=1 CF=0
+a > b  -> ZF=0 CF=0
+
+# Notes
+#  Use ZF to detect equality and CF to detect when the left operand was smaller.

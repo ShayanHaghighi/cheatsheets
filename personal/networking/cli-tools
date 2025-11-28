@@ -1,0 +1,27 @@
+# ARP
+arp -a
+#  Inspect or modify ARP cache entries.
+
+# Interface Dump
+ifconfig
+#  Lists interfaces along with IP and MAC details.
+
+# UDP Scan
+nmap -sU -p 514 192.168.1.0/24
+#  Probe port 514 across the subnet to see which hosts respond.
+
+# Clock Check
+date
+#  Confirm timestamps before digging into logs.
+
+# Interface Status
+nmcli device status
+#  Show NetworkManager view of each device.
+
+# Connection Logs
+journalctl -u NetworkManager
+#  Tail this when debugging connects or drops.
+
+# Routes
+ip route show
+#  Inspect metrics and active paths per interface.

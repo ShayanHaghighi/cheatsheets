@@ -1,0 +1,3 @@
+# Squash Commits
+git rebase -i origin/master~7 master
+#  Interactive rebase the last seven commits on top of origin/master.

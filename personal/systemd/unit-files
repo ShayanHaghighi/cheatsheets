@@ -1,0 +1,16 @@
+# Location
+#  Place name.service files under /etc/systemd/system/.
+
+# Minimal Unit
+[Unit]
+Description=Prometheus Server
+
+[Service]
+ExecStart=/path/to/binary
+WorkingDirectory=/path/to/dir
+
+[Install]
+WantedBy=multi-user.target
+
+# Restart Policies
+#  Add Restart= to control when systemd relaunches the service.

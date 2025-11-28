@@ -1,0 +1,14 @@
+# rbp
+#  Anchors the current stack frame.
+
+# rsp
+#  Tracks the top of the stack.
+
+# rax
+#  Holds function return values.
+
+# rip
+#  Points to the next instruction.
+
+# rdi rsi rdx
+#  Carry the first three integer or pointer parameters on System V AMD64.

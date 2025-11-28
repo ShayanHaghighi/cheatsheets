@@ -1,0 +1,14 @@
+# Make Executable
+chmod +x /path/to/AppImage
+
+# Desktop Entry
+# in: ~/.local/share/applications/<app>.desktop 
+[Desktop Entry]
+Type=Application
+Name=Appname
+Icon=/path/to/icon.png
+Exec=/path/to/AppImage
+Categories=Utility;
+
+# Result
+#  AppImage now shows up in the desktop launcher.
