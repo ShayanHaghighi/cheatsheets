@@ -1,0 +1,5 @@
+ d = ">"
+ for line in all_lines:
+     s =  [e+d for e in line.split(d) if e]
+
+#  [P.Melch] [so/q/7866128] [cc by-sa 3.0]

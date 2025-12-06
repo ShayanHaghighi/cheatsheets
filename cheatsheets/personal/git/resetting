@@ -1,0 +1,3 @@
+# Undo Last Commit
+git reset --soft HEAD~
+#  Drops the tip commit but keeps files staged for a new commit.

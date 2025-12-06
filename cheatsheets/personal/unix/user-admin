@@ -1,0 +1,21 @@
+# Enumerate Users
+getent passwd | cut -d':' -f1
+
+# Add User
+sudo useradd <name>
+
+# Add Group
+sudo groupadd <name>
+
+# Add User To Group
+sudo usermod -a -G <group> <user>
+
+# Rename User And Group
+sudo usermod -l newUsername oldUsername
+sudo groupmod -n newUsername oldUsername
+
+# Show Membership
+groups <user>
+
+# Change File Group
+chgrp <group> <file>

@@ -1,0 +1,17 @@
+#  You can't use it like that. The `or` operator must have two boolean
+#  operands. You have a boolean and a string. You can write
+
+ weather == "Good!" or weather == "Great!": 
+
+#  or
+
+ weather in ("Good!", "Great!"): 
+
+#  What you have written is parsed as
+
+ (weather == "Good") or ("Great")
+
+#  In the case of python, non-empty strings always evaluate to `True`, so
+#  this condition will always be true.
+#  
+#  [blue_note] [so/q/48465536] [cc by-sa 3.0]

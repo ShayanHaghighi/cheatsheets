@@ -1,0 +1,7 @@
+# Inspect Tunnels
+wg show
+#  Lists active WireGuard peers and stats.
+
+# Restart Interface
+sudo systemctl restart wg-quick@wg0.service
+#  Bounce the wg0 instance when troubleshooting.

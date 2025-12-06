@@ -1,0 +1,70 @@
+#  The current answers are good, but do not talk about how they are just
+#  [syntactic sugar][1] to some pattern that we are so used to.
+#  
+#  Let's start with an example, say we have 10 numbers, and we want a
+#  subset of those that are greater than, say, 5.
+
+ >>> numbers = [12, 34, 1, 4, 4, 67, 37, 9, 0, 81]
+
+#  For the above task, the below approaches below are totally identical
+#  to one another, and go from most verbose to concise, readable and
+#  ***pythonic***:
+#  
+#  ##Approach 1
+
+ result = []
+ for index in range(len(numbers)):
+     if numbers[index] > 5:
+         result.append(numbers[index])
+ print result  #Prints [12, 34, 67, 37, 9, 81]
+
+#  ##Approach 2 (Slightly cleaner, for-in loops)
+
+ result = []
+ for number in numbers:
+     if number > 5:
+         result.append(number)
+ print result  #Prints [12, 34, 67, 37, 9, 81]
+
+#  ##Approach 3 (Enter List Comprehension)
+
+ result = [number for number in numbers if number > 5]
+
+#  ##or more generally:
+
+ [function(number) for number in numbers if condition(number)]
+
+#  where:
+#  
+ #  - `function(x)` takes an `x` and transforms it into something useful
+#  (like for instance: `x*x`)
+ #  - if `condition(x)` returns any False-y value (False, None, empty
+#  string, empty list, etc ..) then the current iteration will be skipped
+#  (think `continue`). If the function return a non-False-y value then
+#  the current value makes it to the final resultant array (and goes
+#  through the transformation step above).
+#  
+#  To understand the syntax in a slightly different manner, look at the
+#  Bonus section below.
+#  
+#  For further information, follow the tutorial all other answers have
+#  linked: [List Comprehension][2]
+#  
+#  ---
+#  
+#  ##Bonus
+#  (Slightly un-pythonic, but putting it here for sake of completeness)
+#  
+#  The example above can be written as:
+
+ result = filter(lambda x: x > 5, numbers)
+
+#  The general expression above can be written as:
+
+ result = map(function, filter(condition, numbers)) #result is a list in Py2
+
+  #  [1]: https://en.wikipedia.org/wiki/Syntactic_sugar
+  #  [2]: http://docs.python.org/tutorial/datastructures.htmllist-
+#  comprehensions
+#  
+#  [UltraInstinct] [so/q/6475314] [cc by-sa 3.0]

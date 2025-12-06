@@ -1,0 +1,80 @@
+<!--
+   - # Github Flavored Markdown Supports HTML Tag
+   - 
+   - Simply put this (StackOverflow will not support though)-
+   -->
+
+ <table>
+ <tr>
+ <th>
+ Status
+ </th>
+ <th>
+ Response
+ </th>
+ </tr>
+
+ <tr>
+
+ <td>
+ <pre>
+ <br/><br/><br/>200<br/><br/><br/><br/><br/>400<br/>
+ </pre>
+ </td>
+
+ <td>
+ <pre>
+ json
+   {
+     "id": 10,
+     "username": "alanpartridge",
+     "email": "alan@alan.com",
+     "password_hash": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.CPCWCZsyqqa8./whhfzBZydX7yvahHS",
+     "password_salt": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.",
+     "created_at": "2015-02-14T20:45:26.433Z",
+     "updated_at": "2015-02-14T20:45:26.540Z"
+ }
+ </pre>
+ </td>
+
+ </tr>
+ </table>
+
+<!--
+   - **Output:**
+   - 
+   - [![github markdown table-code][1]][1]
+   - 
+   - <sub> **[Markdown Editor](https://jbt.github.io/markdown-editor/)**
+   - can really be helpful to visualize output as you write.</sub>
+   - 
+   - <sub>Instead of `<pre>` tag we may also use triple-backticks `` ``` ``
+   - for showing a code block.</sub>
+   - 
+   - ---
+   - 
+   - You may also try text-based table like this (**suited for
+   - StackOverflow**)-
+   -->
+
+ +---------------+--------+---------+
+ |       \       | Rating | Comment |
+ +---------------+--------+---------+
+ | One Piece     |  A | B |       ♢ |
+ +---------------+----+---+---------+
+ | Naruto        |  A | C |       ♧ |
+ +---------------+----+---+---------+
+ | One Punch Man |  A | A |       ♥ |
+ +---------------+----+---+---------+
+ | Death Note    |  A | B |       ♠ |
+ +---------------+----+---+---------+
+
+<!--
+   - <sub> **[Text Tables
+   - Generator](https://www.tablesgenerator.com/text_tables)** is a
+   - wonderful site for this purpose. </sub>
+   - 
+   -   [1]: https://i.stack.imgur.com/yVL1a.png
+   - 
+   - [Minhas Kamal] [so/q/28508141] [cc by-sa 3.0]
+   -->

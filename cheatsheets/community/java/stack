@@ -1,0 +1,13 @@
+/*
+ * You've created a new instance, but didn't save that reference
+ * anywhere, so you lost it right after creating it. Instead, you should
+ * assign it to a variable and then apply the methods on it:
+ */
+
+ public static void main(String[] args) {
+     Stack stack = new Stack(5);
+     stack.push(5); // invoked on an instance "stack"
+     System.out.println(stack.pop());
+ }
+
+// [Mureinik] [so/q/38678268] [cc by-sa 3.0]

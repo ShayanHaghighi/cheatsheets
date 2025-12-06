@@ -1,0 +1,10 @@
+# Deploy Roots
+#  Place your site under /var/www/<site-name> so Apache can serve it directly.
+
+# Virtual Hosts
+#  Copy a template from /etc/apache2/sites-available/ and edit it to match the app.
+#  Static apps usually copy the default vhost and only adjust the document root.
+
+# Activation
+sudo a2ensite <conf-name>
+sudo systemctl restart apache2

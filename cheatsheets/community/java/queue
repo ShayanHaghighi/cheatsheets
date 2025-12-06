@@ -1,0 +1,18 @@
+/*
+ * [LinkedList<E>][1] seems to a way to go, LinkedList is a doubly linked
+ * list, which is good for a Queue data structure (FIFO).
+ * 
+ * It maintains references to the Head and Tail elements, which you can
+ * get by <code>.getFirst()</code> and <code>.getLast()</code>
+ * respectively.
+ * 
+ * You can also use `.add(E e)` to append an element to the end of the
+ * queue and `.remove()` to dequeue and retrieve the head (first element)
+ * of the queue.
+ * 
+ *   [1]:
+ * https:docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
+ * "LinkedList&lt;E&gt;"
+ * 
+ * [didxga] [so/q/11149707] [cc by-sa 3.0]
+ */

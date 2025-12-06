@@ -1,0 +1,3 @@
+# Disk Usage Snapshot
+du -sh * | sort -h
+#  Summarize sizes under the current directory and sort ascending.

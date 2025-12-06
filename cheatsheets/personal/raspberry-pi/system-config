@@ -1,0 +1,7 @@
+# Board Config
+sudo raspi-config
+#  Launch the interactive tool for hardware options.
+
+# Fan Speed
+cat /sys/devices/platform/cooling_fan/hwmon/*/fan1_input
+#  Reads the current RPM reported by the fan sensor.

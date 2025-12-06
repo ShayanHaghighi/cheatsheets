@@ -1,0 +1,13 @@
+# Prometheus Queries
+rate(node_cpu_seconds_total{mode="system"}[1m])
+node_filesystem_avail_bytes
+rate(node_network_receive_bytes_total[1m])
+
+# Local Tools
+ps ax
+time <command>
+command &
+#  Use the ampersand to background a process.
+
+# Desktop Widget
+/usr/bin/conky -c /home/shayan/Monitoring/conky/.conkyrc -i 1

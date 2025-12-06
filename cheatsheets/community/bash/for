@@ -1,0 +1,44 @@
+# Remove your semicolon.
+
+ for i in `seq 2`; do echo "$i"; done > out.dat
+
+# **SUGGESTIONS**
+# 
+# Also as suggested by Fredrik Pihl, try not to use external binaries
+# when they are not needed, or at least when practically not:
+
+ for i in {1..2}; do echo "$i"; done > out.dat
+ for ((i = 1; i <= 2; ++i )); do echo "$i"; done > out.dat
+ for i in 1 2; do echo "$i"; done > out.dat
+
+# Also, be careful of outputs in `words` that may cause pathname
+# expansion.
+
+ for A in $(echo '*'); do echo "$A"; done
+
+# Would show your files instead of just a literal `*`.
+# 
+# `$()` is also recommended as a clearer syntax for command substitution
+# in Bash and POSIX shells than backticks (`` ` ``), and it supports
+# nesting.
+# 
+# The cleaner solutions as well for reading output to variables are
+
+ while read VAR; do
+     ...   
+ done < <(do something)
+
+# And
+
+ read ... < <(do something)  ## Could be done on a loop or with readarray.
+
+ for A in "${ARRAY[@]}"; do
+     :
+ done
+
+# Using printf can also be an easier alternative with respect to the
+# intended function:
+
+ printf '%s\n' {1..2} > out.dat
+
+# [konsolebox] [so/q/18612603] [cc by-sa 3.0]

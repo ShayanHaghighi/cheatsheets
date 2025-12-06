@@ -1,0 +1,17 @@
+ cheat:dpkg 
+# To list all installed packages with versions and details:
+dpkg -l
+
+ cheat.sheets:dpkg-deb 
+# Output (unique) list of available sections under which to create DEB package.
+awk '!A[$1]++{print($1)}' <<< "$(dpkg-query --show -f='${Section}\n')"
+
+ tldr:dpkg-query 
+# List all installed packages:
+dpkg-query --list
+
+# List installed packages matching a pattern:
+dpkg-query --list 'libc6*'
+
+# List all files installed by a package:
+dpkg-query --listfiles libc6

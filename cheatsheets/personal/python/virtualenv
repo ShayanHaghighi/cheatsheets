@@ -1,0 +1,3 @@
+# Virtual Environment
+python -m venv env
+#  Creates a local env directory named env.

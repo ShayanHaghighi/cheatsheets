@@ -1,0 +1,5 @@
+# Equality Branches
+#  jz / je jump when ZF is set immediately after a cmp.
+
+# Inequality Branches
+#  jnz / jne jump when ZF remains clear after a cmp.

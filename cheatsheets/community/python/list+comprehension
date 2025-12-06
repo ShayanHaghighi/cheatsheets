@@ -1,0 +1,123 @@
+#  The point of list comprehensions is to generate a list of result
+#  values, one per source value (or one per _matching_ source value, if
+#  you have `if` clauses).
+#  
+#  In other words, it's the same thing as `map` (or a chain of `map` and
+#  `filter` calls, if you have multiple clauses), except that you can
+#  describe each new value as an expression in terms of the old value,
+#  instead of having to wrap that up in a function.
+#  
+#  You can't put a statement (like `mysum = mysum + i`) into a
+#  comprehension, only an expression. And, even if you can come up with
+#  an expression that has the side-effect you want, that would still be a
+#  confusing misuse of the comprehension. If you don't want a list of
+#  result values, don't use a list comprehension.
+#  
+#  If you're just trying to perform a computation in a loop, write an
+#  explicit `for` loop.
+#  
+#  ---
+#  
+#  If you really need it to be one line, you can always do this:
+
+ for i in [i for i in range(2, 10) if i%2==0 or i%5==0]: mysum += i
+
+#  Build the list of things to loop over with a comprehension; do the
+#  side-effect-y calculation in a `for` loop.
+#  
+#  (Of course that's assuming you've already got some value in `mysum` to
+#  add on to, e.g., using `mysum = 0`.)
+#  
+#  And, in general, whenever you want a comprehension just for looping
+#  over once, the kind of comprehension you want is a generator
+#  expression, not a list comprehension. So, turn those square brackets
+#  into parentheses, and you get this:
+
+ for i in (i for i in range(2, 10) if i%2==0 or i%5==0): mysum += i
+
+#  Either way, though, it's more readable and pythonic as two lines:
+
+ for i in (i for i in range(2, 10) if i%2==0 or i%5==0):
+     mysum += i
+
+#  … or even three:
+
+ not2or5 = (i for i in range(2, 10) if i%2==0 or i%5==0) 
+ for i in not2or5:
+     mysum += i
+
+#  ---
+#  
+#  If you're coming from a language that makes `reduce`/`fold` more
+#  intuitive to you than loops, Python has a `reduce` function. However,
+#  it's generally not considered Pythonic to use it just to eliminate
+#  `for` loops and turn block statements into one-liners.
+#  
+#  More generally, trying to cram things into a single line usually makes
+#  things less readable, not more, in Python, and often means you end up
+#  with more characters to type and more tokens to process in your head,
+#  which more than cancels out any gain in saving lines.
+#  
+#  ---
+#  
+#  Of course in this specific case, all you really want to do is sum up
+#  the values of a list. And that's exactly what `sum` does. And that's
+#  trivial to understand. So:
+
+ mysum += sum(i for i in range(2, 10) if i%2==0 or i%5==0)
+
+#  (Again, this is assuming you already have something in `mysum` you
+#  want to add onto. If not, just change the `+=` to an `=`. The same is
+#  true for all of the later examples, so I'll stop explaining it.)
+#  
+#  ---
+#  
+#  All that being said, I'd probably write this either as an explicit
+#  nested block:
+
+ for i in range(2, 10):
+     if i%2==0 or i%5==0:
+         mysum += i
+
+#  … or as a sequence of iterator transformations (which in this case is
+#  really just one transformation):
+
+ not2or5 = (i for i in range(2, 10) if i%2==0 or i%5==0)
+ mysum += sum(not2to5)
+
+#  There's really no cost to splitting things up this way (as long as you
+#  use generator expressions instead of list comprehensions), and it
+#  usually makes the intent of your code a lot more obvious.
+#  
+#  ---
+#  
+#  Some further explanation on generator expressions:
+#  
+#  A generator expression is just like a list comprehension, except that
+#  it builds an iterator instead of a list. An iterator is similar to a
+#  "lazy list" in some functional languages, except that you can only use
+#  it once. (Usually, that's not a problem. In all the examples above,
+#  the only thing we want to do is pass it to the `sum` function or use
+#  it in a `for` loop, and then we never refer to it again.) As you
+#  iterate over it, each value is constructed on demand, and then freed
+#  before you get to the next one.
+#  
+#  This means the space complexity is constant, instead of linear. You've
+#  only ever got one value in memory at a time, whereas with a list
+#  you've obviously got all of them. That's often a huge win.
+#  
+#  However, the time complexity is unchanged. A list comprehension does
+#  all the work up front, so it's linear time to build, then free to use.
+#  A generator expression does the work as you iterate over it, so it's
+#  free to build, then linear to use. Either way, same time. (A generator
+#  expression can actually be significantly faster in practice, because
+#  of cache/memory locality, pipelining, etc., not to mention avoiding
+#  all the memory moving and allocation costs. On the other hand, it's
+#  slower for trivial cases, at least in CPython, because it has to go
+#  through the full iterator protocol instead of the quick special-casing
+#  for lists.)
+#  
+#  (I'm assuming here that the work for each step is constant—obviously
+#  `[sum(range(i)) for i in range(n)]` is quadratic in n, not linear…)
+#  
+#  [abarnert] [so/q/19104760] [cc by-sa 3.0]

@@ -1,0 +1,6 @@
+# Overview
+#  Lightweight DNS resolver suited for caching or overriding domains on a LAN.
+#  Great for pinning names like dog.com to a local web server.
+
+# Config Location
+/etc/dnsmasq.conf

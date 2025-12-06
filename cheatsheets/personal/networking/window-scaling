@@ -1,0 +1,8 @@
+# TCP Windows
+#  Field is 16 bits wide, so the base max is 65,536 bytes.
+
+# Scaling Option
+#  Client advertises a scaling factor in the SYN; receiver multiplies the window by this factor.
+
+# Upper Bound
+#  With scaling, practical windows reach 2^30 bytes on modern stacks.

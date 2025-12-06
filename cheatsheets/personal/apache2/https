@@ -1,0 +1,8 @@
+# Enable TLS
+#  Switch <VirtualHost *:80> to *:443 when serving HTTPS traffic.
+#  Ensure the ssl module is enabled via sudo a2enmod ssl.
+
+# Certificate Directives
+SSLEngine on
+SSLCertificateFile /etc/ssl/certs/<name>.crt
+SSLCertificateKeyFile /etc/ssl/private/<name>.key

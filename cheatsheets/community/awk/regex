@@ -1,0 +1,19 @@
+ cheat.sheets:awk 
+Print only lines that match regex in file.txt
+awk '/regex/' file.txt
+
+# Print only lines that do not match regex in file.txt
+awk '!/regex/' file.txt
+
+# Print line if field 1 matches regex in file.txt
+awk '$1 ~ /regex/' file.txt
+
+# Print line if field 1 does NOT match regex in file.txt
+awk '$1 !~ /regex/' file.txt
+
+ cheat:awk 
+# To execute commands only on rows that satisfy a certain condtion
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '$2=="bailey"{print $0}'
+#
+# To execute commands only on matching rows using regex
+printf "george jetson\nolive oyl\nbeetle bailey" | awk '/ley$/{print $0}'

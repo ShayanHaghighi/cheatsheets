@@ -1,0 +1,3 @@
+# Missing Fonts
+sudo apt install texlive-luatex
+#  Installs the font packages that resolved the latex error.

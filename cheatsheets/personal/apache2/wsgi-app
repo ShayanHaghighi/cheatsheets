@@ -1,0 +1,17 @@
+# WSGI VirtualHost
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/<site>
+    ServerName dog.com
+
+    WSGIDaemonProcess flask_app \
+        python-home=<venv-path> \
+        python-path=<app-path>
+    WSGIScriptAlias / <path-to/app.wsgi>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+# Env Files
+#  Keep the app's .env alongside the project under /var/www/<site> so Apache can read it.

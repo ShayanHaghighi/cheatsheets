@@ -1,0 +1,61 @@
+/*
+ * The structure that you have mentioned is tricky one.
+ * 
+ * This can be possible with the following and its working as expected in
+ * my testing site.
+ * 
+ * This is working code that i have tested:
+ * 
+ *         <?php
+ *         $args = array(
+ *                                         'post_type'
+ * => 'post',
+ *                                         'posts_per_page'        => 8,
+ *                                 );
+ *         $query = new WP_Query( $args );
+ *         if( $query->have_posts() ):
+ *                 $post_count = 1;
+ *                 $wrapper_count = 1;
+ *                 while( $query->have_posts() ): $query->the_post();
+ *                         if( $post_count % 2 === 0 ):
+ *                                 $wrapper_count++;
+ *                                 if( $wrapper_count % 2 != 0 ){ ?>
+ *                                         <div class='a'> Post <?php
+ * echo $post_count; ?> Content </div>
+ *                                 <?php
+ *                                 } else{ ?>
+ *                                         <div class='b'> Post <?php
+ * echo $post_count; ?> Content </div>
+ *                                 <?php
+ *                                 } ?>
+ *                                 </div> <!-- .wrapper end -->
+ *                         <?php
+ *                         else: ?>
+ *                                 <div class=wrap> <!-- wrapper start
+ * -->
+ *                         <?php
+ *                                 if( $wrapper_count % 2 != 0 ){ ?>
+ *                                         <div class='a'> Post <?php
+ * echo $post_count; ?> Content </div>
+ *                                 <?php
+ *                                 } else{ ?>
+ *                                         <div class='b'> Post <?php
+ * echo $post_count; ?> Content </div>
+ *                                 <?php
+ *                                 }
+ *                         endif;
+ */
+         $post_count++;
+/*
+ *                 endwhile;
+ *         endif; ?>
+ * 
+ * I have made a loop as post query for now so that you can modify the
+ * code according your custom loop.
+ * 
+ * Please mention me if you still find any difficulty for understanding.
+ * 
+ * Thank You
+ * 
+ * [Mohammad Ashique Ali] [so/q/48108006] [cc by-sa 3.0]
+ */

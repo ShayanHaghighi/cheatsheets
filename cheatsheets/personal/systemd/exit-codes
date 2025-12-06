@@ -1,0 +1,5 @@
+# Exit 217
+#  The specified user or group is missing.
+
+# Exit 200 / CHDIR
+#  WorkingDirectory does not exist or cannot be read when the service starts.

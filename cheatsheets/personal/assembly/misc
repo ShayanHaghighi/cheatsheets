@@ -1,0 +1,8 @@
+# call
+#  Pushes the next instruction pointer and jumps to the routine.
+
+# lea dest, src
+#  Loads the effective address of src into dest without dereferencing.
+
+# mov dest, src
+#  Copies the value stored at src into dest.

@@ -1,0 +1,12 @@
+#  You can make use of the [`reversed`][1] function for this as:
+
+ >>> array=[0,10,20,40]
+ >>> for i in reversed(array):
+ ...     print(i)
+
+#  Note that `reversed(...)` does not return a list. You can get a
+#  reversed list using `list(reversed(array))`.
+#  
+  #  [1]: https://www.python.org/dev/peps/pep-0322/
+#  
+#  [codaddict] [so/q/3940128] [cc by-sa 3.0]

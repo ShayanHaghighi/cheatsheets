@@ -1,0 +1,9 @@
+# Service Logs
+journalctl -u nginx.service
+#  Swap nginx.service for the unit you care about.
+
+# Network Helpers
+nmcli device status
+ip route show
+journalctl -u NetworkManager
+#  Run alongside journalctl when debugging connectivity.

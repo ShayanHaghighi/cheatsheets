@@ -1,0 +1,3 @@
+# Static Domain Tunnel
+ngrok http --url cool-naturally-hagfish.ngrok-free.app 8080
+#  Reuse the reserved subdomain while forwarding local port 8080.

@@ -1,0 +1,8 @@
+# /etc
+#  Configuration files.
+
+# /var
+#  Logs and other variable data.
+
+# /bin
+#  Essential binaries.
