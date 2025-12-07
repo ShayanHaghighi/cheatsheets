@@ -3,9 +3,35 @@
 source "$CS_CLI_LIB_DIR/config.sh"
 source "$CS_CLI_LIB_DIR/utils.sh"
 
+run_list_mode(){
+    # TODO, put this in a utils function
+local find_cmd="find"
+    if command -v fdfind &> /dev/null; then
+        find_cmd="fdfind"
+    elif command -v fd &> /dev/null; then
+        find_cmd="fd"
+    fi
+
+    $find_cmd --strip-cwd-prefix --base-directory ~/.local/share/cs-cli/cheatsheets/personal --type f && $find_cmd --strip-cwd-prefix --base-directory ~/.local/share/cs-cli/cheatsheets/community --type f
+
+
+
+}
+
 run_edit_mode() {
     local edit_path="$1"
+    if [[ -z $edit_path ]]; then
+        edit_path=$(get_all_note_paths | fzf)
+    fi
+
+    if [[ -z $edit_path ]]; then
+        read -p "Enter note >> " edit_path
+    fi
+
     local target_file="$PERSONAL_CHEATSHEETS_DIR/$edit_path"
+    if [[ -f $COMMUNITY_CHEATSHEETS_USER_DIR/$edit_path ]]; then
+        target_file=$COMMUNITY_CHEATSHEETS_USER_DIR/$edit_path
+    fi
 
     local target_dir
     target_dir=$(dirname "$target_file")
@@ -13,6 +39,17 @@ run_edit_mode() {
 
     ${EDITOR:-nvim} "$target_file"
     exit 0
+}
+
+get_all_note_paths(){
+    local find_cmd="find"
+    if command -v fdfind &> /dev/null; then
+        find_cmd="fdfind"
+    elif command -v fd &> /dev/null; then
+        find_cmd="fd"
+    fi
+
+    $find_cmd --strip-cwd-prefix --base-directory ~/.local/share/cs-cli/cheatsheets/personal --type f && $find_cmd --strip-cwd-prefix --base-directory ~/.local/share/cs-cli/cheatsheets/community --type f
 }
 
 run_fuzzy_find_mode() {
@@ -24,10 +61,7 @@ run_fuzzy_find_mode() {
     fi
 
     local note_path
-    note_path=$($find_cmd . "$PERSONAL_CHEATSHEETS_DIR" "$COMMUNITY_CHEATSHEETS_USER_DIR" --type f | \
-        sed -E 's#^.*/(personal|community)/?(.*)$#\2#' | \
-        grep -v 'README.md' | \
-        grep '/' | \
+    note_path=$(get_all_note_paths | \
         fzf --preview 'cs {}')
 
     if [[ -z "$note_path" ]]; then
@@ -90,8 +124,9 @@ main_controller() {
     local fuzzy_find="false"
     local edit_mode="false"
     local edit_path=""
+    local list_dirs="false"
 
-    while getopts "fe:" opt; do
+    while getopts "flEe:" opt; do
         case $opt in
             f) 
                 fuzzy_find="true"
@@ -100,17 +135,25 @@ main_controller() {
                 edit_mode="true"
                 edit_path="$OPTARG"
                 ;;
+            E) 
+                edit_mode="true"
+                ;;
+            l) 
+                list_dirs="true"
+                ;;
             \?) 
                 echo "Invalid option" >&2
                 exit 1
                 ;;
         esac
-done
+    done
 
     shift $((OPTIND - 1))
 
     if [[ "$edit_mode" == "true" ]]; then
         run_edit_mode "$edit_path"
+    elif [[ "$list_dirs" == "true" ]]; then
+        run_list_mode
     elif [[ "$fuzzy_find" == "true" ]]; then
         run_fuzzy_find_mode
     else

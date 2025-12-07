@@ -1,0 +1,35 @@
+# **For the vast majority<sup>[1]</sup> of visitors here, [the correct
+# and simplest answer to the
+# question](https://stackoverflow.com/questions/3471827/how-do-i-list-
+# all-remote-branches-in-git-1-7comment39347566_3472296) "How do I list
+# all remote branches in Git 1.7+?" is:**
+
+ git branch -r
+
+# For a small minority<sup>[1]</sup> `git branch -r` does not work. If
+# `git branch -r` does not work try:
+
+ git ls-remote --heads <remote-name>
+
+# If `git branch -r` does not work, then maybe as
+# [Cascabel](https://stackoverflow.com/users/119963/cascabel) says
+# ["you've modified the default refspec, so that `git fetch` and `git
+# remote update` don't fetch all the `remote`'s
+# branches"](https://stackoverflow.com/questions/3471827/how-do-i-list-
+# all-remote-branches-in-git-1-7comment3623773_3471827).
+# 
+# ---
+# 
+# <sup>[1]</sup> As of the writing of this footnote 2018-Feb, I looked
+# at the comments and see that the `git branch -r` works for the vast
+# majority (about 90% or
+# [125](https://stackoverflow.com/questions/3471827/how-do-i-list-all-
+# remote-branches-in-git-1-7comment39347566_3472296) out of
+# [140](https://stackoverflow.com/questions/3471827/how-do-i-list-all-
+# remote-branches-in-git-1-7comment41488609_3472296)).
+# 
+# If `git branch -r` does not work, check `git config --get
+# remote.origin.fetch` contains a wildcard (`*`) as per [this
+# answer](https://stackoverflow.com/a/25941875/114770)
+# 
+# [Dustin] [so/q/3471827] [cc by-sa 3.0]

@@ -78,6 +78,7 @@ find_cheatsheet_file() {
     # Then search in COMMUNITY_CHEATSHEETS_USER_DIR
     elif [[ -f "$COMMUNITY_CHEATSHEETS_USER_DIR/$note_path" ]]; then
         full_path="$COMMUNITY_CHEATSHEETS_USER_DIR/$note_path"
+    fi
 
     if [[ -n "$full_path" ]]; then
         echo "$full_path"
@@ -87,4 +88,3 @@ find_cheatsheet_file() {
     fi
 }
 
-export -f find_cheatsheet_file
