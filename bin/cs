@@ -1,15 +1,9 @@
 #!/bin/bash
 
-# Main entry point for the cheatsheet script.
-# This script is a shim that sources the controller and executes the main function.
 
-# Determine the script's directory to robustly source other files.
-# Using readlink to handle symlinks.
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 CS_CLI_LIB_DIR=$(readlink -f "$SCRIPT_DIR/../lib")
 
-# Source the main controller.
 source "$CS_CLI_LIB_DIR/controller.sh"
 
-# Pass all command-line arguments to the main controller.
 main_controller "$@"

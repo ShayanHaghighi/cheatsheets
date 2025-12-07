@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# This file contains the main controller logic for the cs-cli tool.
+source "$CS_CLI_LIB_DIR/config.sh"
+source "$CS_CLI_LIB_DIR/utils.sh"
 
-source "$(dirname "$0")/config.sh"
-source "$(dirname "$0")/utils.sh"
-
-# Handles the -e option to edit a personal cheatsheet.
 run_edit_mode() {
     local edit_path="$1"
     local target_file="$PERSONAL_CHEATSHEETS_DIR/$edit_path"
@@ -18,7 +15,6 @@ run_edit_mode() {
     exit 0
 }
 
-# Handles the -f option for fuzzy finding cheatsheets.
 run_fuzzy_find_mode() {
     local find_cmd="find"
     if command -v fdfind &> /dev/null; then
@@ -28,14 +24,11 @@ run_fuzzy_find_mode() {
     fi
 
     local note_path
-    note_path=$($find_cmd . "$USER_CHEATSHEETS_DIR" "$SYSTEM_CHEATSHEETS_DIR" -type f | \
+    note_path=$($find_cmd . "$PERSONAL_CHEATSHEETS_DIR" "$COMMUNITY_CHEATSHEETS_USER_DIR" --type f | \
         sed -E 's#^.*/(personal|community)/?(.*)$#\2#' | \
         grep -v 'README.md' | \
         grep '/' | \
-        fzf --preview 'base_name=$(echo {} | cut -d "/" -f 1); \
-        lang_name=$(get_language {}); \
-        local found_file=$(find_cheatsheet_file "{}"); \
-        if [[ -n "$found_file" ]]; then cat "$found_file" | batcat --color=always -l "${lang_name:-bash}"; fi')
+        fzf --preview 'cs {}')
 
     if [[ -z "$note_path" ]]; then
         exit 0
@@ -44,7 +37,6 @@ run_fuzzy_find_mode() {
     run_query_mode "$note_path"
 }
 
-# Handles a direct query for a cheatsheet.
 run_query_mode() {
     local query
     if [[ -n "$1" ]]; then
@@ -56,7 +48,7 @@ run_query_mode() {
     local base_topic
     local sub_topic
     IFS=' ' read -r base_topic sub_topic <<< $(get_parts $query)
-    local note_path_internal="$base_topic/$sub_topic" # Renamed to avoid confusion
+    local note_path_internal="$base_topic/$sub_topic" 
 
     local tmp
     tmp=$(mktemp)
@@ -93,9 +85,7 @@ run_query_mode() {
     display_sheet "$cheat_sheet_file" "$note_path_internal"
 }
 
-# Main entry point for the controller. Parses options and calls the appropriate function.
 main_controller() {
-    # Removed export CHEAT_PATH as the external 'cheat' tool is no longer used directly.
 
     local fuzzy_find="false"
     local edit_mode="false"
